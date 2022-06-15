@@ -41,4 +41,8 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
     Route::get('/admin/dashboard', function () {
         return view('admin.index');
     })->name('dashboard');
+
+    // Admin Logout route
+    Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+
 });
