@@ -11,11 +11,11 @@ use App\Actions\Fortify\ResetUserPassword;
 use App\Actions\Fortify\UpdateUserPassword;
 use Illuminate\Support\Facades\RateLimiter;
 use App\Http\Controllers\Backend\AdminController;
-use Laravel\Fortify\Actions\AttemptToAuthenticate;
+use App\Actions\Fortify\AttemptToAuthenticate;
 use App\Actions\Fortify\UpdateUserProfileInformation;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Support\Facades\Auth;
-use Laravel\Fortify\Actions\RedirectIfTwoFactorAuthenticatable;
+use App\Actions\Fortify\RedirectIfTwoFactorAuthenticatable;
 
 class FortifyServiceProvider extends ServiceProvider
 {
