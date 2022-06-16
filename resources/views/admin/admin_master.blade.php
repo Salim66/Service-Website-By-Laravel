@@ -13,12 +13,15 @@
 	<!-- Vendors Style-->
 	<link rel="stylesheet" href="{{ asset('backend/') }}/css/vendors_css.css">
 
+    <!-- Toastr CSS -->
+	<link rel="stylesheet" href="{{ asset('backend/css/toastr.min.css') }}">
+
 	<!-- Style-->
 	<link rel="stylesheet" href="{{ asset('backend/') }}/css/style.css">
 	<link rel="stylesheet" href="{{ asset('backend/') }}/css/skin_color.css">
 
     <!-- JQuery CDN -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script rel="text/javascript" src="{{ asset('backend/js/jquery.min.js') }}"></script>
 
   </head>
 
@@ -317,6 +320,31 @@
 	<!-- Sunny Admin App -->
 	<script src="{{ asset('backend/js/template.js') }}"></script>
 	<script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
+
+    <!-- Toastr JS -->
+	<script src="{{ asset('backend/js/toastr.min.js') }}"></script>
+    <script type="text/javascript">
+        @if(Session::has('message'))
+         let type = "{{ Session::get('alert-type', 'info') }}"
+         switch(type){
+            case 'info':
+            toastr.info(" {{ Session::get('message') }} ");
+            break;
+
+            case 'success':
+            toastr.success(" {{ Session::get('message') }} ");
+            break;
+
+            case 'warning':
+            toastr.warning(" {{ Session::get('message') }} ");
+            break;
+
+              case 'error':
+            toastr.error(" {{ Session::get('message') }} ");
+            break;
+        }
+        @endif
+    </script>
 
 
 </body>

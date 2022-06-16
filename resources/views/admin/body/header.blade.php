@@ -101,10 +101,14 @@
 			</ul>
 		  </li>
 
+          @php
+              $profile_data = \App\Models\Admin::where('id', Auth::guard('admin')->user()->id)->first();
+          @endphp
+
 	      <!-- User Account-->
           <li class="dropdown user user-menu">
-			<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
-				<img src="{{ URL::to('backend/') }}/images/avatar/1.jpg" alt="">
+			<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="Admin">
+				<img src="{{ ($profile_data->profile_photo_path)? URL::to('upload/admin_images/'. $profile_data->profile_photo_path) : URL::to('upload/no_image.jpg')  }}" alt="">
 			</a>
 			<ul class="dropdown-menu animated flipInX">
 			  <li class="user-body">
