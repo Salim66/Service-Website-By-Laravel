@@ -49,5 +49,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
     Route::get('/admin/profile', [AdminProfileController::class, 'adminProfileView'])->name('admin.profile');
     Route::get('/admin/profile/edit', [AdminProfileController::class, 'adminProfileEdit'])->name('admin.profile.edit');
     Route::post('/admin/profile/store', [AdminProfileController::class, 'adminProfileStore'])->name('admin.profile.store');
+    Route::get('/admin/change/password', [AdminProfileController::class, 'adminChnagePassword'])->name('admin.change.password');
+    Route::post('/admin/update/password', [AdminProfileController::class, 'adminUpdatePassword'])->name('admin.update.password');
 
 });

@@ -6,6 +6,7 @@ use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redis;
 
 class AdminProfileController extends Controller
 {
@@ -54,4 +55,20 @@ class AdminProfileController extends Controller
         return redirect()->route('admin.profile')->with($notification);
 
     }
+
+
+    /**
+     * Admin Change Password
+     */
+    public function adminChnagePassword(){
+        return view('admin.admin_change_password');
+    }
+
+    /**
+     * Admin Update password
+     */
+    public function adminUpdatePassword(Request $request){
+
+    }
+
 }
