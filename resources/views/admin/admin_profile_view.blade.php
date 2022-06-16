@@ -10,7 +10,7 @@
                 <!-- Add the bg color to the header using any of the bg-* classes -->
                 <div class="widget-user-header bg-black" style="background: url('../images/gallery/full/10.jpg') center center;">
                   <h3 class="widget-user-username">Name: {{ $profile_data->name }}</h3>
-                  <a href="#" class="btn btn-success float-right">Edit Profile</a>
+                  <a href="{{ route('admin.profile.edit') }}" class="btn btn-rounded btn-success float-right">Edit Profile</a>
                   <h6 class="widget-user-desc">Email: {{ $profile_data->email }}</h6>
                 </div>
                 <div class="widget-user-image">

@@ -47,5 +47,6 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
     Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
     // Admin Profile Route
     Route::get('/admin/profile', [AdminProfileController::class, 'adminProfileView'])->name('admin.profile');
+    Route::get('/admin/profile/edit', [AdminProfileController::class, 'adminProfileEdit'])->name('admin.profile.edit');
 
 });
