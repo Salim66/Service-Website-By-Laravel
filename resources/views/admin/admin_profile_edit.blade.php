@@ -42,11 +42,11 @@
                                     <div class="form-group">
                                         <h5>Image <span class="text-danger">*</span></h5>
                                         <div class="controls">
-                                            <input type="file" name="profile_photo_path" class="form-control"> </div>
+                                            <input type="file" name="profile_photo_path" class="form-control" id="image"> </div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <img src="{{ ($data->profile_photo_path)? URL::to('upload/admin_images/'. $data->profile_photo_path) : URL::to('upload/no_image.jpg')  }}" alt="" style="width: 100px; height: 100px;">
+                                    <img id="showImage" src="{{ ($data->profile_photo_path)? URL::to('upload/admin_images/'. $data->profile_photo_path) : URL::to('upload/no_image.jpg')  }}" alt="" style="width: 100px; height: 100px;">
                                 </div>
                             </div>
 
@@ -68,4 +68,17 @@
     </section>
            <!-- /.content -->
 </div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#image').change(function(e){
+            let reader = new FileReader();
+            reader.onload = function(e){
+                $('#showImage').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+</script>
+
 @endsection
