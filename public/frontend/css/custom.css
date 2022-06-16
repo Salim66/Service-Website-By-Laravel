@@ -1,0 +1,9 @@
+.top_left_header {
+    display: flex;
+    position: relative;
+    float: left;
+    z-index: 1;
+    padding: 15px 0px;
+    gap: 10px;
+    color: #FFF;
+}
