@@ -56,13 +56,13 @@
         <li class="treeview">
           <a href="#">
             <i data-feather="file"></i>
-            <span>Pages</span>
+            <span>Settings</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="profile.html"><i class="ti-more"></i>Profile</a></li>
+            <li><a href="{{ route('contractUs.edit') }}"><i class="ti-more"></i>Contract Us</a></li>
             <li><a href="invoice.html"><i class="ti-more"></i>Invoice</a></li>
             <li><a href="gallery.html"><i class="ti-more"></i>Gallery</a></li>
             <li><a href="faq.html"><i class="ti-more"></i>FAQs</a></li>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\ContractUsController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,5 +53,12 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
     Route::post('/admin/profile/store', [AdminProfileController::class, 'adminProfileStore'])->name('admin.profile.store');
     Route::get('/admin/change/password', [AdminProfileController::class, 'adminChnagePassword'])->name('admin.change.password');
     Route::post('/admin/update/password', [AdminProfileController::class, 'adminUpdatePassword'])->name('admin.update.password');
+
+    // Settings All Routes
+    Route::prefix('settings')->group(function () {
+        //Contract Us Routes
+        Route::get('/contract-us/edit', [ContractUsController::class, 'edit'])->name('contractUs.edit');
+        Route::put('/contract-us/update/{id}', [ContractUsController::class, 'update'])->name('contractUs.update');
+    });
 
 });
