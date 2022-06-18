@@ -13,4 +13,11 @@ class IndexController extends Controller
     public function index(){
         return view('frontend.index');
     }
+
+    /**
+     * Contact Page
+     */
+    public function contactUs(){
+        return view('frontend.contact_us');
+    }
 }

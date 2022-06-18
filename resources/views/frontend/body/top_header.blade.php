@@ -14,11 +14,14 @@
             </div>
         </div> --}}
 
+        @php
+            $contract_us = \App\Models\ContactUs::findOrFail(1);
+        @endphp
         <!-- Top Left -->
         <div class="top-left">
             <ul class="top_left_header">
-                <li><span class="icon flaticon-pin"></span> 47 W 13th street, NY 10011</li>
-                <li><span class="icon flaticon-mail-1"></span> example@example.com</li>
+                <li><span class="icon flaticon-pin"></span> {{ $contract_us->address }}</li>
+                <li><span class="icon flaticon-mail-1"></span> {{ $contract_us->business_email }}</li>
             </ul>
         </div>
 

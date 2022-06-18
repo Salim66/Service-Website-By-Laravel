@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 //Frontend Routes
 
 Route::get('/', [IndexController::class, 'index']);
+Route::get('/contact-us', [IndexController::class, 'contactUs'])->name('contact.us');
 
 
 // Frontend all routes

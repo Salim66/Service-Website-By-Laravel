@@ -69,17 +69,20 @@
                                         <li><a href="account.html">My Account</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="contact.html">Contact</a></li>
+                                <li><a href="{{ route('contact.us') }}">Contact</a></li>
                             </ul>
                         </div>
                     </nav>
                     <!-- Main Menu End-->
 
+                    @php
+                        $contract_us = \App\Models\ContactUs::findOrFail(1);
+                    @endphp
                     <!-- Main Menu End-->
                     <div class="outer-box clearfix">
                        <!-- Button Box -->
                         <div class="btn-box">
-                            <a href="contact.html" class="theme-btn btn-style-one"><span class="icon flaticon-phone-receiver"></span><i>+8 555.55.55</i></a>
+                            <a href="contact.html" class="theme-btn btn-style-one"><span class="icon flaticon-phone-receiver"></span><i>{{ $contract_us->general_phone }}</i></a>
                         </div>
 
                         <!-- Options Box -->

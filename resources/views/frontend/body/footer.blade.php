@@ -57,22 +57,25 @@
                             </div>
                         </div>
 
+                        @php
+                            $contract_us = \App\Models\ContactUs::findOrFail(1);
+                        @endphp
                         <!--Footer Column-->
                         <div class="footer-column col-lg-6 col-md-6 col-sm-12">
                             <div class="footer-widget services-widget">
                                 <h2>General Quries</h2>
                                 <!-- Services List -->
                                 <ul class="service-list">
-                                    <li><span>Email:</span> example@consoul.com</li>
-                                    <li><span>Phone:</span> +1 555-7890-123</li>
+                                    <li><span>Email:</span> {{ $contract_us->general_email }}</li>
+                                    <li><span>Phone:</span> {{ $contract_us->general_phone }}</li>
                                 </ul>
                                 <h2>Service Quries</h2>
                                 <!-- Services List -->
                                 <ul class="service-list">
-                                    <li><span>Email:</span> example@consoul.com</li>
-                                    <li><span>Phone:</span> +1 555-7890-123</li>
+                                    <li><span>Email:</span> {{ $contract_us->business_email }}</li>
+                                    <li><span>Phone:</span> {{ $contract_us->business_phone }}</li>
                                 </ul>
-                                <a href="{{ asset('frontend/') }}/contact.html" class="read-more">Location in Map <span class="arrow flaticon-next-8"></span></a>
+                                <a href="{{ route('contact.us') }}" class="read-more">Location in Map <span class="arrow flaticon-next-8"></span></a>
                             </div>
                         </div>
 
