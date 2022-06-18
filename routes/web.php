@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/contact-us', [IndexController::class, 'contactUs'])->name('contact.us');
+Route::post('/contact/store', [IndexController::class, 'contactStore'])->name('contact.store');
 
 
 // Frontend all routes

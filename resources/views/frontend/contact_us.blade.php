@@ -102,14 +102,22 @@
 				
 				<!-- Contact Form -->
 				<div class="contact-form">
-					
+                    @if(session()->has('success_message'))
+                    <div class="alert alert-success alert-dismissible fade show mt-4" role="alert">
+                      {{ session()->get('success_message') }}
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    @endif
 					<!--Contact Form-->
-					<form method="post" action="" >
+					<form method="post" action="{{ route('contact.store') }}" >
+                        @csrf
 						<div class="row clearfix">
 							
 							<div class="col-lg-6 col-md-6 col-sm-12 form-group">
 								<label>Your name *</label>
-								<input type="text" name="username" placeholder="John Britto" required>
+								<input type="text" name="name" placeholder="Name" required>
 							</div>
 							
 							<div class="col-lg-6 col-md-6 col-sm-12 form-group">
@@ -119,12 +127,12 @@
 							
 							<div class="col-lg-6 col-md-6 col-sm-12 form-group">
 								<label>Phone num *</label>
-								<input type="text" name="phone" placeholder="888.555.66.77" required>
+								<input type="text" name="phone" required>
 							</div>
 							
 							<div class="col-lg-6 col-md-6 col-sm-12 form-group">
-								<label>Website</label>
-								<input type="text" name="website" placeholder="www.example.com" required>
+								<label>Website <small>(Optional)</small></label>
+								<input type="text" name="website" placeholder="www.example.com">
 							</div>
 							
 							<div class="col-lg-12 col-md-12 col-sm-12 form-group">
