@@ -346,6 +346,10 @@
         @endif
     </script>
 
+    <!-- SweetAlert2 -->
+    <script src="{{ asset('backend/js/sweetalert2@11.js') }}"></script>
+    <script src="{{ asset('backend/js/custom.js') }}"></script>
+
 
 </body>
 </html>

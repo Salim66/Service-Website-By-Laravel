@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\ContactMessage;
 use App\Http\Controllers\Backend\ContractUsController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +62,12 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         //Contract Us Routes
         Route::get('/contract-us/edit', [ContractUsController::class, 'edit'])->name('contractUs.edit');
         Route::put('/contract-us/update/{id}', [ContractUsController::class, 'update'])->name('contractUs.update');
+    });
+
+    // Contact Message
+    Route::prefix('contact')->group(function () {
+        Route::get('/', [ContactMessage::class, 'allMessage'])->name('contact.message');
+        Route::get('/delete/{id}', [ContactMessage::class, 'contactMDelete'])->name('contact.message.delete');
     });
 
 });
