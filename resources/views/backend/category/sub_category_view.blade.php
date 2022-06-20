@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 
-@section('main-content')
+@section('admin')
 <div class="container-full">
     <!-- Main content -->
     <section class="content">
@@ -20,8 +20,7 @@
                     <thead>
                         <tr>
                             <th>Category</th>
-                            <th>SubCategory En</th>
-                            <th>SubCategory Ar</th>
+                            <th>SubCategory</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -29,10 +28,9 @@
                         @foreach($subcategories as $data)
                         <tr>
                             <td>
-                                {{ $data->category->category_name_en }}
+                                {{ $data->category->category_name }}
                             </td>
-                            <td>{{ $data->subcategory_name_en }}</td>
-                            <td>{{ $data->subcategory_name_ar }}</td>
+                            <td>{{ $data->subcategory_name }}</td>
                             <td width="30%">
                                 <a title="Edit Data" href="{{ route('subcategory.edit', $data->id) }}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
                                 <a title="Delete Data" href="{{ route('subcategory.delete', $data->id) }}" id="delete" class="btn btn-danger"><i class="fa fa-trash"></i></a>
@@ -68,7 +66,7 @@
 									<select name="category_id" id="select" class="form-control">
 										<option value="" selected disabled>Select Category</option>
                                         @foreach($categories as $category)
-										<option value="{{ $category->id }}">{{ $category->category_name_en }}</option>
+										<option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                         @endforeach
 									</select>
                                     @error('category_id')
@@ -77,19 +75,10 @@
 								</div>
 							</div>
                             <div class="form-group">
-                                <h5>SubCateogry Name English <span class="text-danger">*</span></h5>
+                                <h5>SubCateogry Name <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="subcategory_name_en" class="form-control">
-                                    @error('subcategory_name_en')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h5>SubCateogry Name Arabic <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <input type="text" name="subcategory_name_ar" class="form-control">
-                                    @error('subcategory_name_ar')
+                                    <input type="text" name="subcategory_name" class="form-control">
+                                    @error('subcategory_name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

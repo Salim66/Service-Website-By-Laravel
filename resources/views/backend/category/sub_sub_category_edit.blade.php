@@ -1,6 +1,6 @@
 @extends('admin.admin_master')
 
-@section('main-content')
+@section('admin')
 <div class="container-full">
     <!-- Main content -->
     <section class="content">
@@ -27,7 +27,7 @@
 									<select name="category_id" id="select" class="form-control">
 										<option value="" selected disabled>Select Category</option>
                                         @foreach($categories as $category)
-										<option value="{{ $category->id }}" {{ $category->id === $data->category_id ? 'selected' : '' }}>{{ $category->category_name_en }}</option>
+										<option value="{{ $category->id }}" {{ $category->id === $data->category_id ? 'selected' : '' }}>{{ $category->category_name }}</option>
                                         @endforeach
 									</select>
                                     @error('category_id')
@@ -41,7 +41,7 @@
 									<select name="subcategory_id" id="select" class="form-control">
 										<option value="" selected disabled>Select SubCategory</option>
                                         @foreach($subcategories as $subsub)
-										<option value="{{ $subsub->id }}" {{ $subsub->id === $data->subcategory_id ? 'selected' : '' }}>{{ $subsub->subcategory_name_en }}</option>
+										<option value="{{ $subsub->id }}" {{ $subsub->id === $data->subcategory_id ? 'selected' : '' }}>{{ $subsub->subcategory_name }}</option>
                                         @endforeach
 									</select>
                                     @error('subcategory_id')
@@ -50,19 +50,10 @@
 								</div>
 							</div>
                             <div class="form-group">
-                                <h5>Sub-SubCateogry Name English <span class="text-danger">*</span></h5>
+                                <h5>Sub-SubCateogry Name <span class="text-danger">*</span></h5>
                                 <div class="controls">
-                                    <input type="text" name="subsubcategory_name_en" class="form-control" value="{{ $data->subsubcategory_name_en }}">
-                                    @error('subsubcategory_name_en')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <h5>Sub-SubCateogry Name Arabic <span class="text-danger">*</span></h5>
-                                <div class="controls">
-                                    <input type="text" name="subsubcategory_name_ar" class="form-control" value="{{ $data->subsubcategory_name_ar }}">
-                                    @error('subsubcategory_name_ar')
+                                    <input type="text" name="subsubcategory_name" class="form-control" value="{{ $data->subsubcategory_name }}">
+                                    @error('subsubcategory_name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

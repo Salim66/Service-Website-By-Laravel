@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\ContactMessage;
 use App\Http\Controllers\Backend\ContractUsController;
 use App\Http\Controllers\Backend\SocialController;
 use App\Http\Controllers\Backend\SocialLinkController;
+use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Route;
 
