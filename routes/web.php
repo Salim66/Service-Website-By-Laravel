@@ -2,8 +2,11 @@
 
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ContactMessage;
 use App\Http\Controllers\Backend\ContractUsController;
+use App\Http\Controllers\Backend\SocialController;
+use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,11 +60,42 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
     Route::get('/admin/change/password', [AdminProfileController::class, 'adminChnagePassword'])->name('admin.change.password');
     Route::post('/admin/update/password', [AdminProfileController::class, 'adminUpdatePassword'])->name('admin.update.password');
 
+
+    // Admin All Category Routes
+    Route::prefix('category')->group(function(){
+        Route::get('/view', [CategoryController::class, 'categoryView'])->name('all.category');
+        Route::post('/store', [CategoryController::class, 'categoryStore'])->name('category.store');
+        Route::get('/edit/{id}', [CategoryController::class, 'categoryEdit'])->name('category.edit');
+        Route::post('/update', [CategoryController::class, 'categoryUpdate'])->name('category.update');
+        Route::get('/delete/{id}', [CategoryController::class, 'categoryDelete'])->name('category.delete');
+
+        // Admin All SubCategory Routes
+        Route::get('/sub/view', [SubCategoryController::class, 'subCategoryView'])->name('all.subcategory');
+        Route::post('/sub/store', [SubCategoryController::class, 'subCategoryStore'])->name('subcategory.store');
+        Route::get('/sub/edit/{id}', [SubCategoryController::class, 'subCategoryEdit'])->name('subcategory.edit');
+        Route::post('/sub/update', [SubCategoryController::class, 'subCategoryUpdate'])->name('subcategory.update');
+        Route::get('/sub/delete/{id}', [SubCategoryController::class, 'subCategoryDelete'])->name('subcategory.delete');
+
+        // Admin All Sub->SubCategory Routes
+        Route::get('/sub/sub/view', [SubCategoryController::class, 'subSubCategoryView'])->name('all.subsubcategory');
+        Route::post('/sub/sub/store', [SubCategoryController::class, 'subSubCategoryStore'])->name('subsubcategory.store');
+        Route::get('/sub/sub/edit/{id}', [SubCategoryController::class, 'subSubCategoryEdit'])->name('subsubcategory.edit');
+        Route::post('/sub/sub/update', [SubCategoryController::class, 'subSubCategoryUpdate'])->name('subsubcategory.update');
+        Route::get('/sub/sub/delete/{id}', [SubCategoryController::class, 'subSubCategoryDelete'])->name('subsubcategory.delete');
+        Route::get('/subcategory/ajax/{category_id}', [SubCategoryController::class, 'getSubCategory']);
+        Route::get('/subsubcategory/ajax/{subcategory_id}', [SubCategoryController::class, 'getSubSubCategory']);
+    });
+
     // Settings All Routes
     Route::prefix('settings')->group(function () {
         //Contract Us Routes
         Route::get('/contract-us/edit', [ContractUsController::class, 'edit'])->name('contractUs.edit');
         Route::put('/contract-us/update/{id}', [ContractUsController::class, 'update'])->name('contractUs.update');
+
+        //Social Link Routes
+        Route::get('/social/edit', [SocialLinkController::class, 'edit'])->name('social.edit');
+        Route::put('/social/update/{id}', [SocialLinkController::class, 'update'])->name('social.update');
+
     });
 
     // Contact Message

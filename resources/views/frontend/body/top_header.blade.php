@@ -25,13 +25,16 @@
             </ul>
         </div>
 
+        @php
+            $social = \App\Models\Social::findOrFail(1);
+        @endphp
         <!-- Top Right -->
         <div class="top-right clearfix">
             <ul class="social-box">
-                <li><a href="#"><span class="icon fab fa-facebook-f"></span></a></li>
-                <li><a href="#"><span class="icon fab fa-twitter"></span></a></li>
-                <li><a href="#"><span class="icon fab fa-skype"></span></a></li>
-                <li><a href="#"><span class="icon fab fa-linkedin-in"></span></a></li>
+                <li><a href="{{ $social->facebook }}"><span class="icon fab fa-facebook-f"></span></a></li>
+                <li><a href="{{ $social->twitter }}"><span class="icon fab fa-twitter"></span></a></li>
+                <li><a href="{{ $social->skype }}"><span class="icon fab fa-skype"></span></a></li>
+                <li><a href="{{ $social->linkedin }}"><span class="icon fab fa-linkedin-in"></span></a></li>
             </ul>
         </div>
 

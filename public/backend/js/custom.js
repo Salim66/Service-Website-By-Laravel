@@ -4,7 +4,7 @@
         $(document).on('click', '#delete', function(e){
             e.preventDefault();
             let link = $(this).attr('href');
-    
+
             Swal.fire({
             title: 'Are you sure?',
             text: "Delete this data!",
@@ -23,9 +23,9 @@
                 )
             }
             })
-    
+
         });
 
-        
+
     });
 })(jQuery);

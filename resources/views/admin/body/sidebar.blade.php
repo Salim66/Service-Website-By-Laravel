@@ -1,3 +1,7 @@
+@php
+    $prefix = Request::route()->getPrefix();
+    $route = Route::current()->getName();
+@endphp
 <!-- Left side column. contains the logo and sidebar -->
 <aside class="main-sidebar">
     <!-- sidebar-->
@@ -24,6 +28,20 @@
 			<span>Dashboard</span>
           </a>
         </li>
+
+        <li class="treeview {{ ($prefix == '/category')? 'active' : '' }}">
+            <a href="#">
+              <i class="fa fa-codiepie" aria-hidden="true"></i> <span>Category</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ ($route == 'all.category')? 'active' : '' }}"><a href="{{ route('all.category') }}"><i class="ti-more"></i>All Category</a></li>
+              <li class="{{ ($route == 'all.subcategory')? 'active' : '' }}"><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>All SubCategory</a></li>
+              <li class="{{ ($route == 'all.subsubcategory')? 'active' : '' }}"><a href="{{ route('all.subsubcategory') }}"><i class="ti-more"></i>All Sub->SubCategory</a></li>
+            </ul>
+          </li>
 
         <li class="treeview">
           <a href="#">
@@ -63,7 +81,7 @@
           </a>
           <ul class="treeview-menu">
             <li><a href="{{ route('contractUs.edit') }}"><i class="ti-more"></i>Contract Us</a></li>
-            <li><a href="invoice.html"><i class="ti-more"></i>Invoice</a></li>
+            <li><a href="{{ route('social.edit') }}"><i class="ti-more"></i>Social Link</a></li>
             <li><a href="gallery.html"><i class="ti-more"></i>Gallery</a></li>
             <li><a href="faq.html"><i class="ti-more"></i>FAQs</a></li>
             <li><a href="timeline.html"><i class="ti-more"></i>Timeline</a></li>
