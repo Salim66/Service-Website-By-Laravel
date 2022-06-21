@@ -41,7 +41,21 @@
               <li class="{{ ($route == 'all.subcategory')? 'active' : '' }}"><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>All SubCategory</a></li>
               <li class="{{ ($route == 'all.subsubcategory')? 'active' : '' }}"><a href="{{ route('all.subsubcategory') }}"><i class="ti-more"></i>All Sub->SubCategory</a></li>
             </ul>
-          </li>
+        </li>
+
+        <li class="treeview {{ ($prefix == '/service')? 'active' : '' }}">
+            <a href="#">
+              <i class="fa fa-product-hunt" aria-hidden="true"></i>
+              <span>Service</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ ($route == 'add.service')? 'active' : '' }}"><a href="{{ route('add.service') }}"><i class="ti-more"></i>Add Service</a></li>
+              <li class="{{ ($route == 'manage.service')? 'active' : '' }}"><a href="{{ route('manage.service') }}"><i class="ti-more"></i>Manage Service</a></li>
+            </ul>
+        </li>
 
         <li class="treeview">
           <a href="#">

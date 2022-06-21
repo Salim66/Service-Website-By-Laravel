@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ContactMessage;
 use App\Http\Controllers\Backend\ContractUsController;
+use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SocialController;
 use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -86,6 +87,18 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         Route::get('/subcategory/ajax/{category_id}', [SubCategoryController::class, 'getSubCategory']);
         Route::get('/subsubcategory/ajax/{subcategory_id}', [SubCategoryController::class, 'getSubSubCategory']);
     });
+
+    // Admin All Service Routes
+    Route::prefix('service')->group(function(){
+        Route::get('/add', [ServiceController::class, 'addService'])->name('add.service');
+        Route::post('/store', [ServiceController::class, 'serviceStore'])->name('service.store');
+        Route::get('/manage', [ServiceController::class, 'serviceManage'])->name('manage.service');
+        Route::get('/view/{id}', [ServiceController::class, 'serviceView'])->name('service.view');
+        Route::get('/edit/{id}', [ServiceController::class, 'serviceEdit'])->name('service.edit');
+        Route::post('/update', [ServiceController::class, 'serviceUpdate'])->name('service.update');
+        Route::get('/delete/{id}', [ServiceController::class, 'serviceDelete'])->name('service.delete');
+    });
+
 
     // Settings All Routes
     Route::prefix('settings')->group(function () {

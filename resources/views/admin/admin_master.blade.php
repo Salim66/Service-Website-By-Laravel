@@ -22,7 +22,8 @@
 
     <!-- JQuery CDN -->
     <script rel="text/javascript" src="{{ asset('backend/js/jquery.min.js') }}"></script>
-
+    <!-- Custom CSS -->
+	<link rel="stylesheet" href="{{ asset('backend/') }}/css/custom.css">
   </head>
 
 <body class="hold-transition dark-skin sidebar-mini theme-primary fixed">
@@ -320,6 +321,11 @@
 	<!-- Sunny Admin App -->
 	<script src="{{ asset('backend/js/template.js') }}"></script>
 	<script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
+
+    <!-- CDEditor -->
+    <script src="{{ asset('../assets/vendor_components/ckeditor/ckeditor.js') }}"></script>
+	<script src="{{ asset('../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js') }}"></script>
+	<script src="{{ asset('backend/js/pages/editor.js') }}"></script>
 
     <!-- Toastr JS -->
 	<script src="{{ asset('backend/js/toastr.min.js') }}"></script>
