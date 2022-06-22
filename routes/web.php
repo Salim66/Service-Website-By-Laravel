@@ -6,7 +6,6 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ContactMessage;
 use App\Http\Controllers\Backend\ContractUsController;
 use App\Http\Controllers\Backend\ServiceController;
-use App\Http\Controllers\Backend\SocialController;
 use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Frontend\IndexController;
@@ -28,6 +27,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/contact-us', [IndexController::class, 'contactUs'])->name('contact.us');
 Route::post('/contact/store', [IndexController::class, 'contactStore'])->name('contact.store');
+// Service Details Page
+Route::get('/service-detials/{slug}', [IndexController::class, 'serviceDetails'])->name('service-details');
+Route::get('/download-service-pdf/{id}', [IndexController::class, 'downloadServicePDF'])->name('download-service-pdf');
+// Category Wise Service
+Route::get('/category-wise-service/{slug}', [IndexController::class, 'categoryWiseService'])->name('category.wise.service');
 
 
 // Frontend all routes

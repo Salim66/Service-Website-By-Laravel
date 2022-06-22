@@ -1,48 +1,89 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('frontend.main_master')
 
-        <x-jet-validation-errors class="mb-4" />
+@section('main')
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+<!--Page Title-->
+<section class="page-title" style="background-image:url(/frontend/images/background/8.jpg);">
+    <div class="auto-container">
+        <div class="clearfix">
+            <div class="pull-left">
+                <h1>My Account</h1>
             </div>
-        @endif
-
-        <form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <div class="pull-right">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="index.html">Home</a></li>
+                    <li>My Account</li>
+                </ul>
             </div>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+<!--Register Section-->
+<section class="register-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+
+            <div class="form-column column col-lg-3 col-md-12 col-sm-12">
             </div>
+            
+            <!--Form Column-->
+            <div class="form-column column col-lg-6 col-md-12 col-sm-12">
+            
+                <div class="title-box">
+                    <h2>Login Now</h2>
+                </div>
+                
+                <!--Login Form-->
+                <div class="styled-form login-form">
 
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
+                    <x-jet-validation-errors class="mb-4 text-danger" />
+
+                    @if (session('status'))
+                        <div class="mb-4 font-medium text-sm text-green-600">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
+                    <form method="POST" action="{{ isset($guard) ? url($guard.'/login') : route('login') }}">
+                        @csrf
+
+                        <div class="form-group">
+                            <span class="adon-icon"><span class="fa fa-envelope-o"></span></span>
+                            <input id="email" type="email" name="email" :value="old('email')" required autofocus  placeholder="Emai Address*">
+                        </div>
+                        <div class="form-group">
+                            <span class="adon-icon"><span class="fa fa-unlock-alt"></span></span>
+                            <input id="password" type="password" name="password" required autocomplete="current-password" placeholder="Enter Password">
+                        </div>
+                        <div class="clearfix">
+                            <div class="form-group pull-left">
+                                <button type="submit" class="theme-btn register-btn">Login <span class="arrow right flaticon-next-7"></span></button>
+                            </div>
+                        </div>
+                        
+                        <div class="clearfix">
+                            <div class="pull-left">
+                                <input type="checkbox" id="remember-me" name="remember"><label class="remember-me" for="remember-me">&nbsp; Remember Me</label>
+                            </div>
+                            <div class="pull-right">
+                                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                                    {{ __('Forgot your password?') }}
+                                </a>
+                            </div>
+                        </div>
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('register') }}">
+                            {{ __("Don't have account please register?") }}
+                        </a>
+                    </form>
+                </div>
+                
             </div>
+        </div>
+    </div>
+</section>
+<!--End Register Section-->
 
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
 
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+@endsection

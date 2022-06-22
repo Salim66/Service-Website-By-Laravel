@@ -1,60 +1,100 @@
-<x-guest-layout>
-    <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
+@extends('frontend.main_master')
 
-        <x-jet-validation-errors class="mb-4" />
+@section('main')
 
-        <form method="POST" action="{{ route('register') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="name" value="{{ __('Name') }}" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
+<!--Page Title-->
+<section class="page-title" style="background-image:url(/frontend/images/background/8.jpg);">
+    <div class="auto-container">
+        <div class="clearfix">
+            <div class="pull-left">
+                <h1>My Account</h1>
             </div>
-
-            <div class="mt-4">
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <div class="pull-right">
+                <ul class="bread-crumb clearfix">
+                    <li><a href="index.html">Home</a></li>
+                    <li>My Account</li>
+                </ul>
             </div>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
 
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+<!--Register Section-->
+<section class="register-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+
+            <div class="form-column column col-lg-3 col-md-12 col-sm-12">
             </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
-            </div>
-
-            @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
-                <div class="mt-4">
-                    <x-jet-label for="terms">
-                        <div class="flex items-center">
-                            <x-jet-checkbox name="terms" id="terms"/>
-
-                            <div class="ml-2">
-                                {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
-                                ]) !!}
-                            </div>
-                        </div>
-                    </x-jet-label>
+            
+            <!--Form Column-->
+            <div class="form-column column col-lg-6 col-md-12 col-sm-12">
+            
+                <div class="title-box text-center">
+                    <h2>Register Here</h2>
                 </div>
-            @endif
+                
+                <!--Login Form-->
+                <div class="styled-form register-form">
+                    <x-jet-validation-errors class="mb-4 text-danger" />
 
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-jet-button class="ml-4">
-                    {{ __('Register') }}
-                </x-jet-button>
+                    <form method="POST" action="{{ route('register') }}">
+                        @csrf
+                        <div class="form-group">
+                            <span class="adon-icon"><span class="fa fa-user"></span></span>
+                            <input type="text" name="name" placeholder="Your Name *">
+                        </div>
+                        <div class="form-group">
+                            <span class="adon-icon"></span>
+                            <input type="text" name="position" placeholder="Position *">
+                        </div>
+                        <div class="form-group">
+                            <span class="adon-icon"></span>
+                            <input type="text" name="company_name" placeholder="Company Name *">
+                        </div>
+                        <div class="form-group">
+                            <span class="adon-icon"><span class="fa fa-envelope-o"></span></span>
+                            <input type="email" name="official_email"placeholder="Official Email*">
+                        </div>
+                        <div class="form-group">
+                            <span class="adon-icon"><span class="fa fa-envelope-o"></span></span>
+                            <input type="email" name="email" placeholder="Personal Email*">
+                        </div>
+                        <div class="form-group">
+                            <span class="adon-icon"><span class="fa fa-envelope-o"></span></span>
+                            <input type="text" name="number" placeholder="Number*">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Date Of Birth: </label>
+                            <input type="date" name="date_of_birth" data-date-inline-picker="true">
+                        </div>
+                        <div class="form-group">
+                            <span class="adon-icon"><span class="fa fa-unlock-alt"></span></span>
+                            <input type="password" name="password" placeholder="Enter Password">
+                        </div>
+                        <div class="form-group">
+                            <span class="adon-icon"><span class="fa fa-unlock-alt"></span></span>
+                            <input type="password" id="password_confirmation" name="password_confirmation" placeholder="Confirm password">
+                        </div>
+                        <div class="clearfix">
+                            <div class="form-group pull-left">
+                                <button type="submit" class="theme-btn register-btn">Register <span class="arrow right flaticon-next-7"></span></button>
+                            </div>
+                            
+                        </div>
+                        <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
+                            {{ __('Already registered?') }}
+                        </a>
+                    </form>
+                </div>
+                
             </div>
-        </form>
-    </x-jet-authentication-card>
-</x-guest-layout>
+            
+        </div>
+    </div>
+</section>
+<!--End Register Section-->
+
+
+@endsection

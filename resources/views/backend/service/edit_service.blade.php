@@ -98,7 +98,7 @@
                                 <div class="form-group">
                                     <h5>Service PDF File</h5>
                                     <div class="controls">
-                                        <input type="file" name="file" class="form-control" value="{{ $service->file }}"/>
+                                        <input type="file" name="file" class="form-control" value="{{ $service->file }}" accept="application/pdf,application/vnd.ms-excel"/>
                                     </div>
                                 </div>
                             </div>

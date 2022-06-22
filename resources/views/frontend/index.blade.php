@@ -4,6 +4,9 @@
 
  @include('frontend.body.hero')
 
+ @php
+     $all_service = \App\Models\Service::latest()->limit(27)->get();
+ @endphp
 <!-- Services Section Two -->
 <section class="services-section-two">
     <div class="auto-container">
@@ -12,136 +15,32 @@
         <div class="sec-title centered">
             <div class="title">What We Do</div>
             <h2>Main Services</h2>
-            <div class="text">Our goal is to help our companies maintain or achieve best- in-class positions in their <br> respective industries and our team works.</div>
         </div>
 
         <div class="services-carousel owl-carousel owl-theme">
 
             <!-- Services Block -->
+            @foreach($all_service as $data)
             <div class="services-block-two">
                 <div class="inner-box">
                     <div class="image">
-                        <img src="{{ asset('frontend/') }}/images/resource/service-4.jpg" alt="" />
+                        <img src="{{ URL::to($data->image) }}" alt="" />
                         <!-- Heading Box -->
                         <div class="heading-box">
-                            <h4>Advanced Analytics</h4>
+                            <h4>{{ $data->category->category_name }}</h4>
                         </div>
                         <!-- Overlay Box -->
                         <div class="overlay-box">
                             <div class="overlay-inner">
-                                <h3><a href="{{ asset('frontend/') }}/advance-analytics.html">Advanced Analytics</a></h3>
-                                <div class="text"> To take a trivial example, which of us everundertakes labour physical advantage from it.</div>
-                                <a class="read-more" href="{{ asset('frontend/') }}/advance-analytics.html"><span class="arrow left flaticon-next-7"></span> Read More</a>
+                                <h3><a href="{{ route('service-details',$data->title_slug) }}">{{ $data->category->category_name }}</a></h3>
+                                <div class="text">{!! Str::words(htmlspecialchars_decode($data->description), 22, '...') !!}</div>
+                                <a class="read-more" href="{{ route('service-details',$data->title_slug) }}"><span class="arrow left flaticon-next-7"></span> Read More</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- Services Block -->
-            <div class="services-block-two">
-                <div class="inner-box">
-                    <div class="image">
-                        <img src="{{ asset('frontend/') }}/images/resource/service-5.jpg" alt="" />
-                        <!-- Heading Box -->
-                        <div class="heading-box">
-                            <h4>Change Management</h4>
-                        </div>
-                        <!-- Overlay Box -->
-                        <div class="overlay-box">
-                            <div class="overlay-inner">
-                                <h3><a href="{{ asset('frontend/') }}/advance-analytics.html">Change Management</a></h3>
-                                <div class="text"> To take a trivial example, which of us everundertakes labour physical advantage from it.</div>
-                                <a class="read-more" href="{{ asset('frontend/') }}/advance-analytics.html"><span class="arrow left flaticon-next-7"></span> Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Services Block -->
-            <div class="services-block-two">
-                <div class="inner-box">
-                    <div class="image">
-                        <img src="{{ asset('frontend/') }}/images/resource/service-6.jpg" alt="" />
-                        <!-- Heading Box -->
-                        <div class="heading-box">
-                            <h4>Corporate Finance</h4>
-                        </div>
-                        <!-- Overlay Box -->
-                        <div class="overlay-box">
-                            <div class="overlay-inner">
-                                <h3><a href="{{ asset('frontend/') }}/advance-analytics.html">Corporate Finance</a></h3>
-                                <div class="text"> To take a trivial example, which of us everundertakes labour physical advantage from it.</div>
-                                <a class="read-more" href="{{ asset('frontend/') }}/advance-analytics.html"><span class="arrow left flaticon-next-7"></span> Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Services Block -->
-            <div class="services-block-two">
-                <div class="inner-box">
-                    <div class="image">
-                        <img src="{{ asset('frontend/') }}/images/resource/service-4.jpg" alt="" />
-                        <!-- Heading Box -->
-                        <div class="heading-box">
-                            <h4>Advanced Analytics</h4>
-                        </div>
-                        <!-- Overlay Box -->
-                        <div class="overlay-box">
-                            <div class="overlay-inner">
-                                <h3><a href="{{ asset('frontend/') }}/advance-analytics.html">Advanced Analytics</a></h3>
-                                <div class="text"> To take a trivial example, which of us everundertakes labour physical advantage from it.</div>
-                                <a class="read-more" href="{{ asset('frontend/') }}/advance-analytics.html"><span class="arrow left flaticon-next-7"></span> Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Services Block -->
-            <div class="services-block-two">
-                <div class="inner-box">
-                    <div class="image">
-                        <img src="{{ asset('frontend/') }}/images/resource/service-5.jpg" alt="" />
-                        <!-- Heading Box -->
-                        <div class="heading-box">
-                            <h4>Change Management</h4>
-                        </div>
-                        <!-- Overlay Box -->
-                        <div class="overlay-box">
-                            <div class="overlay-inner">
-                                <h3><a href="{{ asset('frontend/') }}/advance-analytics.html">Change Management</a></h3>
-                                <div class="text"> To take a trivial example, which of us everundertakes labour physical advantage from it.</div>
-                                <a class="read-more" href="{{ asset('frontend/') }}/advance-analytics.html"><span class="arrow left flaticon-next-7"></span> Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Services Block -->
-            <div class="services-block-two">
-                <div class="inner-box">
-                    <div class="image">
-                        <img src="{{ asset('frontend/') }}/images/resource/service-6.jpg" alt="" />
-                        <!-- Heading Box -->
-                        <div class="heading-box">
-                            <h4>Corporate Finance</h4>
-                        </div>
-                        <!-- Overlay Box -->
-                        <div class="overlay-box">
-                            <div class="overlay-inner">
-                                <h3><a href="{{ asset('frontend/') }}/advance-analytics.html">Corporate Finance</a></h3>
-                                <div class="text"> To take a trivial example, which of us everundertakes labour physical advantage from it.</div>
-                                <a class="read-more" href="{{ asset('frontend/') }}/advance-analytics.html"><span class="arrow left flaticon-next-7"></span> Read More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
 
         </div>
 

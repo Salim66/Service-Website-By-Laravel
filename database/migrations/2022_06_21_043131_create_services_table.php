@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreign('subcategory_id')->references('id')->on('sub_categories')->onDelete('cascade');
             $table->foreign('subsubcategory_id')->references('id')->on('sub_sub_categories')->onDelete('cascade');
             $table->string('title');
+            $table->string('title_slug');
             $table->string('image')->nullable();
             $table->string('file')->nullable();
             $table->longText('description')->nullable();

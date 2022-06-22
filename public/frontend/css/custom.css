@@ -11,3 +11,25 @@
 .google_map_link iframe {
     width: 100% !important;
 }
+
+p, .text {
+    text-align: justify !important;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 400;
+    color: #555555;
+    margin: 0;
+}
+
+.service_download_btn {
+    padding: 18px 25px;
+    color: #ffffff;
+    background-color: #f97534;
+}
+
+.service_download_btn:hover {
+    color: #ffffff;
+    background-color: #f97534;
+}
+
+
