@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ContactMessage;
 use App\Http\Controllers\Backend\ContractUsController;
+use App\Http\Controllers\Backend\PostCategoryController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -34,6 +35,12 @@ Route::get('/download-service-pdf/{id}', [IndexController::class, 'downloadServi
 Route::get('/category-wise-service/{slug}', [IndexController::class, 'categoryWiseService'])->name('category.wise.service');
 // Service Serach Date Wise
 Route::post('/search-date-service', [IndexController::class, 'dateWiseSearchService'])->name('date-search');
+// Category Wise Service Search Routes
+Route::get('/category/services/{cat_id}/{slug}', [IndexController::class, 'cateogrywiseServices']);
+// SubCategory Wise Service Search Routes
+Route::get('/subcategory/services/{subcat_id}/{slug}', [IndexController::class, 'subCateogrywiseServices']);
+// Sub-SubCategory Wise Service Search Routes
+Route::get('/subsubcategory/services/{subsubcat_id}/{slug}', [IndexController::class, 'subSubCateogrywiseServices']);
 
 
 // Frontend all routes
@@ -69,7 +76,7 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
     Route::post('/admin/update/password', [AdminProfileController::class, 'adminUpdatePassword'])->name('admin.update.password');
 
 
-    // Admin All Category Routes
+    // Admin All Service Category Routes
     Route::prefix('category')->group(function(){
         Route::get('/view', [CategoryController::class, 'categoryView'])->name('all.category');
         Route::post('/store', [CategoryController::class, 'categoryStore'])->name('category.store');
@@ -103,6 +110,16 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         Route::get('/edit/{id}', [ServiceController::class, 'serviceEdit'])->name('service.edit');
         Route::post('/update', [ServiceController::class, 'serviceUpdate'])->name('service.update');
         Route::get('/delete/{id}', [ServiceController::class, 'serviceDelete'])->name('service.delete');
+    });
+
+
+    // Admin All Post Category Routes
+    Route::prefix('post-category')->group(function(){
+        Route::get('/view', [PostCategoryController::class, 'postCategoryView'])->name('all.post.category');
+        Route::post('/store', [PostCategoryController::class, 'postCategoryStore'])->name('post.category.store');
+        Route::get('/edit/{id}', [PostCategoryController::class, 'postCategoryEdit'])->name('post.category.edit');
+        Route::post('/update', [PostCategoryController::class, 'postCategoryUpdate'])->name('post.category.update');
+        Route::get('/delete/{id}', [PostCategoryController::class, 'postCategoryDelete'])->name('post.category.delete');
     });
 
 

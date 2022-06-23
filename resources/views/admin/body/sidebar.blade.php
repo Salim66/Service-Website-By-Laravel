@@ -31,7 +31,7 @@
 
         <li class="treeview {{ ($prefix == '/category')? 'active' : '' }}">
             <a href="#">
-              <i class="fa fa-codiepie" aria-hidden="true"></i> <span>Category</span>
+              <i class="fa fa-codiepie" aria-hidden="true"></i> <span>Service Category</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
               </span>
@@ -54,6 +54,18 @@
             <ul class="treeview-menu">
               <li class="{{ ($route == 'add.service')? 'active' : '' }}"><a href="{{ route('add.service') }}"><i class="ti-more"></i>Add Service</a></li>
               <li class="{{ ($route == 'manage.service')? 'active' : '' }}"><a href="{{ route('manage.service') }}"><i class="ti-more"></i>Manage Service</a></li>
+            </ul>
+        </li>
+
+        <li class="treeview {{ ($prefix == '/post-category')? 'active' : '' }}">
+            <a href="#">
+              <i class="fa fa-codiepie" aria-hidden="true"></i> <span>Post Category</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ ($route == 'all.post.category')? 'active' : '' }}"><a href="{{ route('all.post.category') }}"><i class="ti-more"></i>All Category</a></li>
             </ul>
         </li>
 

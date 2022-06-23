@@ -6,7 +6,7 @@
         <div class="inner-container">
             <div class="auto-container clearfix">
                 <div class="logo-outer">
-                    <div class="logo"><a href="index.html"><img src="{{ asset('frontend/') }}/images/logo.png" alt="" title=""></a></div>
+                    <div class="logo"><a href="{{ url('/') }}"><img src="{{ asset('frontend/') }}/images/logo.png" alt="" title=""></a></div>
                 </div>
 
                 <div class="nav-outer clearfix">
@@ -19,54 +19,42 @@
                             </button>
                         </div>
 
+                        @php
+                            $categories = \App\Models\Category::limit(3)->get();
+                        @endphp
+
                         <div class="collapse navbar-collapse clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
+                                @foreach($categories as $category)
+                                <li class="dropdown"><a href="{{ url('/category/services/'.$category->id.'/'.$category->category_slug) }}">{{ $category->category_name }}</a>
+                                    <ul>
+                                        @php
+                                                $subcategories = App\Models\SubCategory::where('category_id', $category->id)->orderBy('subcategory_name', 'ASC')->get();
+                                        @endphp
 
-                                <li class="dropdown"><a href="#">About us</a>
-                                    <ul>
-                                        <li><a href="about.html">About Company</a></li>
-                                        <li><a href="faq.html">FAQ’s</a></li>
-                                        <li><a href="clients.html">Our Clients</a></li>
-                                        <li><a href="price.html">Pricing & Plans</a></li>
-                                        <li><a href="testimonial.html">Testimonials</a></li>
-                                        <li><a href="not-found.html">404 Page</a></li>
+                                        @foreach($subcategories as $sub)
+                                        <li class="dropdown"><a href="{{ url('/subcategory/services/'.$sub->id.'/'.$sub->subcategory_slug) }}">{{ $sub->subcategory_name }}</a>
+
+                                            <ul>
+                                                @php
+                                                    $subsubcategories = App\Models\SubSubCategory::where('subcategory_id', $sub->id)->orderBy('subsubcategory_name', 'ASC')->get();
+                                                @endphp
+
+                                                @foreach($subsubcategories as $subsub)
+                                                <li><a href="{{ url('/subsubcategory/services/'.$subsub->id.'/'.$subsub->subsubcategory_slug) }}">{{ $subsub->subsubcategory_name }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                        @endforeach
                                     </ul>
                                 </li>
-                                <li class="dropdown"><a href="#">Services</a>
-                                    <ul>
-                                        <li><a href="services.html">Services</a></li>
-                                        <li><a href="advance-analytics.html">Advanced Analytics</a></li>
-                                        <li><a href="corporate-finance.html">Corporate Finance</a></li>
-                                        <li><a href="customer-marketing.html">Customer Marketing</a></li>
-                                        <li><a href="information-technology.html">Information Technology</a></li>
-                                        <li><a href="social-marketing.html">Social Marketing</a></li>
-                                        <li><a href="private-equity.html">Private Equity</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Projects</a>
-                                    <ul>
-                                        <li><a href="projects.html">Project 3 Column</a></li>
-                                        <li><a href="project-3-column.html">3 Columns Modern</a></li>
-                                        <li><a href="project-4-column.html">4 Columns Modern</a></li>
-                                        <li><a href="project-masonry.html">Masonry Style 01</a></li>
-                                        <li><a href="project-masonry-2.html">Masonry Style 02</a></li>
-                                        <li><a href="project-single.html">Single Project</a></li>
-                                    </ul>
-                                </li>
+                                @endforeach
+                               
                                 <li class="dropdown"><a href="#">Blog</a>
                                     <ul>
                                         <li><a href="blog.html">Blog Default</a></li>
                                         <li><a href="blog-sidebar.html">Blog Large With Sidebar</a></li>
                                         <li><a href="blog-single.html">Blog Single Post</a></li>
-                                    </ul>
-                                </li>
-                                <li class="dropdown"><a href="#">Shop</a>
-                                    <ul>
-                                        <li><a href="shops.html">Our Products</a></li>
-                                        <li><a href="shop-single.html">Product Single</a></li>
-                                        <li><a href="shoping-cart.html">Shopping Cart</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="account.html">My Account</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="{{ route('contact.us') }}">Contact</a></li>
@@ -81,9 +69,9 @@
                     <!-- Main Menu End-->
                     <div class="outer-box clearfix">
                        <!-- Button Box -->
-                        <div class="btn-box">
+                        {{-- <div class="btn-box">
                             <a href="contact.html" class="theme-btn btn-style-one"><span class="icon flaticon-phone-receiver"></span><i>{{ $contract_us->general_phone }}</i></a>
-                        </div>
+                        </div> --}}
 
                         <!-- Options Box -->
                         <div class="option-box clearfix">

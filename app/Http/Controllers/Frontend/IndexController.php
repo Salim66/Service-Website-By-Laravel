@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Service;
+use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
+use App\Models\SubSubCategory;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -93,6 +95,33 @@ class IndexController extends Controller
  
         return view('frontend.date_wise_service', compact('all_data', 'start_date', 'end_date'));
 
+    }
+
+     /**
+     * Category Wise Services Search
+     */
+    public function cateogrywiseServices($cat_id, $slug){
+        $all_data = Service::where('category_id', $cat_id)->orderBy('id', 'DESC')->get();
+        $category = Category::findOrFail($cat_id);
+        return view('frontend.service.cateogry_services', compact('all_data', 'category'));
+    }
+
+    /**
+     * SubCategory Wise Services Search
+     */
+    public function subCateogrywiseServices($subcat_id, $slug){
+        $all_data = Service::where('subcategory_id', $subcat_id)->orderBy('id', 'DESC')->get();
+        $subcategory = SubCategory::findOrFail($subcat_id);
+        return view('frontend.service.subcateogry_services', compact('all_data', 'subcategory'));
+    }
+
+    /**
+     * Sub-SubCategory Wise Services Search
+     */
+    public function subSubCateogrywiseServices($subsubcat_id, $slug){
+        $all_data = Service::where('subsubcategory_id', $subsubcat_id)->orderBy('id', 'DESC')->get();
+        $subsubcategory = SubSubCategory::findOrFail($subsubcat_id);
+        return view('frontend.service.subsubcateogry_services', compact('all_data', 'subsubcategory'));
     }
 
 }
