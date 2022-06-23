@@ -45,6 +45,55 @@
                             </div>
                         </div>
 
+                        <div class="sidebar-widget broucher-widget">
+                            <div class="widget-content">
+                                
+                                <!-- Broucher Box -->
+                                @if(!empty($data->file) || $data->file != null)
+                                <div class="broucher-box">
+                                    <div class="broucher-inner">
+                                        <a href="{{ route('download-service-pdf',$data->id) }}" class="overlay-link"></a>
+                                        <div class="content">
+                                            <div class="icon flaticon-pdf-2"></div>
+                                            <h3>Detailed Service Pack</h3>
+                                            <div class="file">Download PDF</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endif
+                                
+                            </div>
+                        </div>
+
+                        <!-- Quote Widget -->
+                        <div class="sidebar-widget quote-widget">
+                            <div class="widget-content">
+                                <form action="{{ route('date-search') }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                             <div class="form-group">
+                                                 <label for="" class="service_date_l">Start Date</label>
+                                                 <input type="date" name="start_date" class="form-control">
+                                             </div>
+                                        </div><br>
+                                        <div class="col-md-12">
+                                             <div class="form-group">
+                                                 <label for="" class="service_date_l">End Date</label>
+                                                 <input type="date" name="end_date" class="form-control">
+                                             </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                             <div class="form-group">
+                                                 <button class="district_button" type="submit">Search</button>
+                                             </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        
+
                     </div>
                 </aside>
             </div>
@@ -83,13 +132,13 @@
                                 </button>
                                 </div>
                             @endif --}}
-                            <div class="service-tabs tabs-box">
+                            {{-- <div class="service-tabs tabs-box">
 
                                 <!--Tab Btns-->
                                 @if(!empty($data->file) || $data->file != null)
                                 <a class="service_download_btn" href="{{ route('download-service-pdf',$data->id) }}">Download Details</a>
                                 @endif
-                            </div>
+                            </div> --}}
                         </div>
 
                     </div>

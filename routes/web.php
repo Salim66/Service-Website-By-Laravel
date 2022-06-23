@@ -32,6 +32,8 @@ Route::get('/service-detials/{slug}', [IndexController::class, 'serviceDetails']
 Route::get('/download-service-pdf/{id}', [IndexController::class, 'downloadServicePDF'])->name('download-service-pdf');
 // Category Wise Service
 Route::get('/category-wise-service/{slug}', [IndexController::class, 'categoryWiseService'])->name('category.wise.service');
+// Service Serach Date Wise
+Route::post('/search-date-service', [IndexController::class, 'dateWiseSearchService'])->name('date-search');
 
 
 // Frontend all routes

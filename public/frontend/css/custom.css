@@ -32,4 +32,24 @@ p, .text {
     background-color: #f97534;
 }
 
+.service_date_l {
+    color: #000;
+    font-size: 18px;
+}
+
+.district_button {
+    width: 100%;
+    padding: 8px;
+    font-size: 18px;
+    transition: .2s all;
+    -webkit-transition: .2s all;
+    -moz-transition: .2s all;
+    -ms-transition: .2s all;
+    -o-transition: .2s all;
+}
+
+.district_button:hover {
+    background-color: #000;
+    color: #fff;
+}
 

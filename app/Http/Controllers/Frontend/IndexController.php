@@ -75,4 +75,24 @@ class IndexController extends Controller
         $all_data = Service::where('category_id', $category->id)->latest()->get();
         return view('frontend.category_wise_service', compact('all_data', 'category'));
     }
+
+    /**
+     * Date Wise Search Service
+     */
+    public function dateWiseSearchService(Request $request){
+
+        $this->validate($request, [
+            'start_date' => 'required',
+            'end_date' => 'required',
+        ]);
+
+        $start_date = date('d-m-Y', strtotime($request->start_date));
+        $end_date = date('d-m-Y', strtotime($request->end_date));
+
+        $all_data = Service::whereBetween('date', [$start_date, $end_date])->get();
+ 
+        return view('frontend.date_wise_service', compact('all_data', 'start_date', 'end_date'));
+
+    }
+
 }
