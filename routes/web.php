@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ContactMessage;
 use App\Http\Controllers\Backend\ContractUsController;
 use App\Http\Controllers\Backend\PostCategoryController;
+use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Backend\SubCategoryController;
@@ -122,6 +123,16 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         Route::get('/delete/{id}', [PostCategoryController::class, 'postCategoryDelete'])->name('post.category.delete');
     });
 
+    // Admin All Post Routes
+    Route::prefix('post')->group(function(){
+        Route::get('/add', [PostController::class, 'addPost'])->name('add.post');
+        Route::post('/store', [PostController::class, 'postStore'])->name('post.store');
+        Route::get('/manage', [PostController::class, 'postManage'])->name('manage.post');
+        Route::get('/view/{id}', [PostController::class, 'postView'])->name('post.view');
+        Route::get('/edit/{id}', [PostController::class, 'postEdit'])->name('post.edit');
+        Route::post('/update', [PostController::class, 'postUpdate'])->name('post.update');
+        Route::get('/delete/{id}', [PostController::class, 'postDelete'])->name('post.delete');
+    });
 
     // Settings All Routes
     Route::prefix('settings')->group(function () {
