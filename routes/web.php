@@ -42,7 +42,14 @@ Route::get('/category/services/{cat_id}/{slug}', [IndexController::class, 'cateo
 Route::get('/subcategory/services/{subcat_id}/{slug}', [IndexController::class, 'subCateogrywiseServices']);
 // Sub-SubCategory Wise Service Search Routes
 Route::get('/subsubcategory/services/{subsubcat_id}/{slug}', [IndexController::class, 'subSubCateogrywiseServices']);
-
+// Single Blog Post
+Route::get('/single-blog/{slug}', [IndexController::class, 'singleBlog'])->name('single.blog');
+// Blog 
+Route::get('/blog', [IndexController::class, 'allBlog'])->name('blog');
+// Category Wise Post
+Route::get('/category-wise-post/{slug}', [IndexController::class, 'categoryWisePost'])->name('category.wise.blog');
+//Search Box Blog Search
+Route::post('/blog-search', [IndexController::class, 'blogSearch'])->name('search.blog');
 
 // Frontend all routes
 Route::middleware(['auth:sanctum,web', config('jetstream.auth_session'),'verified'])->group(function () {

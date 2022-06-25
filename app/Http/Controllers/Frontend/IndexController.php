@@ -9,6 +9,8 @@ use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Models\SubSubCategory;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use App\Models\PostCategory;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -122,6 +124,40 @@ class IndexController extends Controller
         $all_data = Service::where('subsubcategory_id', $subsubcat_id)->orderBy('id', 'DESC')->get();
         $subsubcategory = SubSubCategory::findOrFail($subsubcat_id);
         return view('frontend.service.subsubcateogry_services', compact('all_data', 'subsubcategory'));
+    }
+
+    /**
+     * Single Blog
+     */
+    public function singleBlog($slug){
+        $data = Post::where('title_slug', $slug)->first();
+        return view('frontend.single_blog', compact('data'));
+    }
+
+    /**
+     * All Blog
+     */
+    public function allBlog(){
+        $all_data = Post::latest()->paginate(9);
+        return view('frontend.blog', compact('all_data'));
+    }
+
+    /**
+     * Category Wise Post
+     */
+    public function categoryWisePost($slug){
+        $category = PostCategory::where('post_category_slug', $slug)->first();
+        $all_data = Post::where('category_id', $category->id)->latest()->paginate(9);
+        return view('frontend.category_wise_blog', compact('all_data', 'category'));
+    }
+
+    /**
+     * Blog Search
+     */
+    public function blogSearch(Request $request){
+        $search = $request->search;
+        $all_data = Post::where('title', 'LIKE', '%'.$search.'%')->latest()->paginate(9);
+        return view('frontend.search_box_wise_blog', compact('all_data', 'search'));
     }
 
 }

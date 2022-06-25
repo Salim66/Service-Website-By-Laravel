@@ -20,6 +20,9 @@
 
     <link href="{{ asset('frontend/') }}/css/custom.css" rel="stylesheet">
 
+    <!-- Share This -->
+    <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=62b6a953c3c9a30019463f67&product=inline-share-buttons" async="async"></script>
+
     </head>
 
 <body>
