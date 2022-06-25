@@ -36,13 +36,7 @@
                         </li>
                         @endforeach
                        
-                        <li class="dropdown"><a href="#">Blog</a>
-                            <ul>
-                                <li><a href="blog.html">Blog Default</a></li>
-                                <li><a href="blog-sidebar.html">Blog Large With Sidebar</a></li>
-                                <li><a href="blog-single.html">Blog Single Post</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="{{ route('blog') }}">Blog</a></li>
                         <li><a href="{{ route('contact.us') }}">Contact</a></li>
                     </ul>
                 </div>

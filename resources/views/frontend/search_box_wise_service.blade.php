@@ -6,7 +6,7 @@
     <div class="auto-container">
         <div class="clearfix">
             <div class="pull-left">
-                <h1>{{ $category->category_name }}</h1>
+                <h1>{{ $search }}</h1>
             </div>
             <div class="pull-right">
                 <ul class="bread-crumb clearfix">

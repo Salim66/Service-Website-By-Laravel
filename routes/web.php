@@ -1,17 +1,18 @@
 <?php
 
-use App\Http\Controllers\Backend\AdminController;
-use App\Http\Controllers\Backend\AdminProfileController;
-use App\Http\Controllers\Backend\CategoryController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\ContactMessage;
-use App\Http\Controllers\Backend\ContractUsController;
-use App\Http\Controllers\Backend\PostCategoryController;
 use App\Http\Controllers\Backend\PostController;
+use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\ServiceController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ContractUsController;
 use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Backend\SubCategoryController;
-use App\Http\Controllers\Frontend\IndexController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\PostCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,8 @@ Route::get('/blog', [IndexController::class, 'allBlog'])->name('blog');
 Route::get('/category-wise-post/{slug}', [IndexController::class, 'categoryWisePost'])->name('category.wise.blog');
 //Search Box Blog Search
 Route::post('/blog-search', [IndexController::class, 'blogSearch'])->name('search.blog');
+//Search Box Service Search
+Route::post('/service-search', [IndexController::class, 'serviceSearch'])->name('search.service');
 
 // Frontend all routes
 Route::middleware(['auth:sanctum,web', config('jetstream.auth_session'),'verified'])->group(function () {
@@ -150,6 +153,10 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         //Social Link Routes
         Route::get('/social/edit', [SocialLinkController::class, 'edit'])->name('social.edit');
         Route::put('/social/update/{id}', [SocialLinkController::class, 'update'])->name('social.update');
+
+        // SEO Routes
+        Route::get('seos/edit', [SeoController::class, 'edit'])->name('seo.edit');
+        Route::put('seos/update/{id}', [SeoController::class, 'update'])->name('seo.update');
 
     });
 

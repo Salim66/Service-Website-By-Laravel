@@ -26,6 +26,19 @@
 
         });
 
+        // Logo Image Preview
+        $('#logo_image_load').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('.logo_image_preview').attr('src', imageURL);
+        });
+
+        // Favicon Image Preview
+        $('#favicon_image_load').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('.favicon_image_preview').attr('src', imageURL);
+        });
 
     });
 })(jQuery);

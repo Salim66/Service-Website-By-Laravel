@@ -122,7 +122,7 @@
           <ul class="treeview-menu">
             <li><a href="{{ route('contractUs.edit') }}"><i class="ti-more"></i>Contract Us</a></li>
             <li><a href="{{ route('social.edit') }}"><i class="ti-more"></i>Social Link</a></li>
-            <li><a href="gallery.html"><i class="ti-more"></i>Gallery</a></li>
+            <li class="{{ ($route == 'seo.edit')? 'active' : '' }}"><a href="{{ route('seo.edit') }}"><i class="ti-more"></i>SEO</a></li>
             <li><a href="faq.html"><i class="ti-more"></i>FAQs</a></li>
             <li><a href="timeline.html"><i class="ti-more"></i>Timeline</a></li>
           </ul>

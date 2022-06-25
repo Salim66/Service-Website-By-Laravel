@@ -1,9 +1,19 @@
+@php
+    $seo = \App\Models\Seo::findOrFail(1);
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
     <head>
     <meta charset="utf-8">
-    <title>Consoul - Business Consulting HTML Template | Home Page 02</title>
+    <title>{{ $seo->meta_title }}</title>
+    <meta name="description" content="{{ $seo->meta_description }}">
+    <meta name="keyword" content="{{ $seo->meta_keyword }}">
+    <meta name="author" content="{{ $seo->meta_author }}">
+    <!-- Google Analytics -->
+    <script>
+        {{ $seo->google_analytics }}
+    </script>
     <!-- Stylesheets -->
     <link href="{{ asset('frontend/') }}/css/bootstrap.css" rel="stylesheet">
     <link href="{{ asset('frontend/') }}/css/style.css" rel="stylesheet">
@@ -15,8 +25,6 @@
     <!-- Responsive -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <!--[if lt IE 9]><script src="{{ asset('frontend/') }}/https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
-    <!--[if lt IE 9]><script src="{{ asset('frontend/') }}/js/respond.js"></script><![endif]-->
 
     <link href="{{ asset('frontend/') }}/css/custom.css" rel="stylesheet">
 

@@ -50,13 +50,7 @@
                                 </li>
                                 @endforeach
                                
-                                <li class="dropdown"><a href="#">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog Default</a></li>
-                                        <li><a href="blog-sidebar.html">Blog Large With Sidebar</a></li>
-                                        <li><a href="blog-single.html">Blog Single Post</a></li>
-                                    </ul>
-                                </li>
+                                <li><a href="{{ route('blog') }}">Blog</a></li>
                                 <li><a href="{{ route('contact.us') }}">Contact</a></li>
                             </ul>
                         </div>
@@ -88,9 +82,10 @@
                                     <ul class="dropdown-menu pull-right search-panel" aria-labelledby="dropdownMenu3">
                                         <li class="panel-outer">
                                             <div class="form-container">
-                                                <form method="post" action="http://st.ourhtmldemo.com/new/consoul/blog.html">
+                                                <form method="post" action="{{ route('search.service') }}">
+                                                    @csrf
                                                     <div class="form-group">
-                                                        <input type="search" name="field-name" value="" placeholder="Search Here" required>
+                                                        <input type="search" name="search" value="" placeholder="Search Here" required>
                                                         <button type="submit" class="search-btn"><span class="fa fa-search"></span></button>
                                                     </div>
                                                 </form>

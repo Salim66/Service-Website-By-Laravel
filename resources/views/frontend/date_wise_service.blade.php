@@ -43,6 +43,11 @@
             @endforeach
             
         </div>
+
+         <!--Post Share Options-->
+         <div class="styled-pagination text-center">
+            {{ $all_data->links('frontend.paginator') }}
+        </div>
         
         
     </div>

@@ -53,3 +53,15 @@ p, .text {
     color: #fff;
 }
 
+.sec-title .text {
+    position: relative;
+    display: block;
+    font-size: 15px;
+    line-height: 25px;
+    color: #8a90ac;
+    font-weight: 400;
+    margin-top: 20px;
+    line-height: 2em;
+    text-align: center !important;
+}
+

@@ -1,4 +1,7 @@
 <!--Main Footer-->
+@php
+    $seo = \App\Models\Seo::findOrFail(1);
+@endphp
 <footer class="main-footer">
 
     <div class="auto-container">
@@ -14,9 +17,8 @@
                         <!--Footer Column-->
                         <div class="footer-column col-lg-6 col-md-6 col-sm-12">
                             <div class="footer-widget about-widget">
-                                <h3>Let’s create something creative & innovative together for your business.</h3>
-                                <div class="text">Our goal is to help our companies maintain or achieve best- in-class positions in their respective industries and our team works.</div>
-                                <a href="{{ asset('frontend/') }}/about.html" class="theme-btn btn-style-five">Read More <span class="arrow flaticon-next-8"></span></a>
+                                <h3>{{ $seo->footer_title }}</h3>
+                                <div class="text">{{ $seo->footer_description }}</div>
                             </div>
                         </div>
 

@@ -160,4 +160,13 @@ class IndexController extends Controller
         return view('frontend.search_box_wise_blog', compact('all_data', 'search'));
     }
 
+    /**
+     * Service Search
+     */
+    public function serviceSearch(Request $request){
+        $search = $request->search;
+        $all_data = Service::where('title', 'LIKE', '%'.$search.'%')->latest()->paginate(9);
+        return view('frontend.search_box_wise_service', compact('all_data', 'search'));
+    }
+
 }
