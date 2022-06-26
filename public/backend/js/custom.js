@@ -40,5 +40,12 @@
             $('.favicon_image_preview').attr('src', imageURL);
         });
 
+        // Slider Image Preview
+        $('#slider_image').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('#slider_image_preview').attr('src', imageURL);
+        });
+
     });
 })(jQuery);

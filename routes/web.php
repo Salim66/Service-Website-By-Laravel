@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\ContactMessage;
 use App\Http\Controllers\Backend\PostController;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\ServiceController;
 use App\Http\Controllers\Backend\CategoryController;
@@ -164,6 +165,17 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
     Route::prefix('contact')->group(function () {
         Route::get('/', [ContactMessage::class, 'allMessage'])->name('contact.message');
         Route::get('/delete/{id}', [ContactMessage::class, 'contactMDelete'])->name('contact.message.delete');
+    });
+
+    // Admin All Slider Routes
+    Route::prefix('slider')->group(function(){
+        Route::get('/view', [SliderController::class, 'sliderView'])->name('manage.slider');
+        Route::post('/store', [SliderController::class, 'sliderStore'])->name('slider.store');
+        Route::get('/edit/{id}', [SliderController::class, 'sliderEdit'])->name('slider.edit');
+        Route::post('/update', [SliderController::class, 'sliderUpdate'])->name('slider.update');
+        Route::get('/delete/{id}', [SliderController::class, 'sliderDelete'])->name('slider.delete');
+        Route::get('/inactive/{id}', [SliderController::class, 'sliderInactive'])->name('slider.inactive');
+        Route::get('/active/{id}', [SliderController::class, 'sliderActive'])->name('slider.active');
     });
 
 });

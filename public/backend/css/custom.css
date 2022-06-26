@@ -1,4 +1,11 @@
-.backend_table_product-img {
+.backend_table_product-img,
+.brand__img-table {
     width: 100px;
+}
+
+.slider_edit_img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
 }
 

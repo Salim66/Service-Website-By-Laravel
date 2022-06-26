@@ -92,7 +92,7 @@
             <div class="clearfix">
 
                 <div class="pull-left">
-                    <div class="copyright"><span>&copy; 2019 Consoul,</span> Finance & Consulting Theme.</div>
+                    <div class="copyright"><span>&copy; 2022 Consoul,</span> Techdyno BD LTD.</div>
                 </div>
                 <div class="pull-right">
                     <ul class="footer-list">
