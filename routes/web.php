@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\Backend\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\ContactMessage;
 use App\Http\Controllers\Backend\PostController;
+use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\AdminController;
+use App\Http\Controllers\Backend\PolicyController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\ServiceController;
@@ -57,6 +58,9 @@ Route::post('/blog-search', [IndexController::class, 'blogSearch'])->name('searc
 Route::post('/service-search', [IndexController::class, 'serviceSearch'])->name('search.service');
 //About Us Page
 Route::get('/about-us', [IndexController::class, 'aboutUs'])->name('about.us');
+//Privacy Policy Page
+Route::get('/privacy-policy', [IndexController::class, 'privacyPolicy'])->name('privacy.policy');
+
 
 // Frontend all routes
 Route::middleware(['auth:sanctum,web', config('jetstream.auth_session'),'verified'])->group(function () {
@@ -183,6 +187,15 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         Route::get('/delete/{id}', [SliderController::class, 'sliderDelete'])->name('slider.delete');
         Route::get('/inactive/{id}', [SliderController::class, 'sliderInactive'])->name('slider.inactive');
         Route::get('/active/{id}', [SliderController::class, 'sliderActive'])->name('slider.active');
+    });
+
+    // Privacy Policy Routes
+    Route::prefix('policies')->group(function () {
+        Route::get('/list', [PolicyController::class, 'list'])->name('policy.list');
+        Route::post('/store', [PolicyController::class, 'store'])->name('policy.store');
+        Route::get('/edit/{id}', [PolicyController::class, 'edit'])->name('policy.edit');
+        Route::put('/update/{id}', [PolicyController::class, 'update'])->name('policy.update');
+        Route::get('/delete/{id}', [PolicyController::class, 'delete'])->name('policy.delete');
     });
 
 });

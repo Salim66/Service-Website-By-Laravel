@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\SubSubCategory;
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Policy;
 use App\Models\Post;
 use App\Models\PostCategory;
 use Illuminate\Support\Facades\Auth;
@@ -176,6 +177,14 @@ class IndexController extends Controller
     public function aboutUs(){
         $data = About::find(1);
         return view('frontend.about_us', compact('data'));
+    }
+
+    /**
+     * Privacy Policy page
+     */
+    public function privacyPolicy(){
+        $all_data = Policy::all();
+        return view('frontend.privacy_policy', compact('all_data'));
     }
 
 }

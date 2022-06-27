@@ -28,11 +28,9 @@
                                 <h2>Usefull links</h2>
                                 <ul class="footer-link-list">
                                     <li><a href="{{ route('about.us') }}">About Us</a></li>
-                                    <li><a href="{{ asset('frontend/') }}/#">Meet Team</a></li>
-                                    <li><a href="{{ asset('frontend/') }}/#">Testimonials</a></li>
-                                    <li><a href="{{ asset('frontend/') }}/#">Our Projects</a></li>
-                                    <li><a href="{{ asset('frontend/') }}/#">News & Updates</a></li>
-                                    <li><a href="{{ asset('frontend/') }}/#">Contact Us</a></li>
+                                    <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
+                                    <li><a href="{{ route('blog') }}">Blog</a></li>
+                                    <li><a href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -44,17 +42,19 @@
                 <div class="big-column col-lg-6 col-md-12 col-sm-12">
                     <div class="row clearfix">
 
+                        @php
+                            $categories = \App\Models\Category::all();
+                        @endphp
+
                         <!--Footer Column-->
                         <div class="footer-column col-lg-6 col-md-6 col-sm-12">
                             <div class="footer-widget links-widget">
                                 <h2>Solution For</h2>
                                 <ul class="footer-link-list">
-                                    <li><a href="{{ asset('frontend/') }}/#">Advanced Analytics</a></li>
-                                    <li><a href="{{ asset('frontend/') }}/#">Change Management</a></li>
-                                    <li><a href="{{ asset('frontend/') }}/#">Corporate Finance</a></li>
-                                    <li><a href="{{ asset('frontend/') }}/#">Customer Marketing</a></li>
-                                    <li><a href="{{ asset('frontend/') }}/#">Information Technology</a></li>
-                                    <li><a href="{{ asset('frontend/') }}/#">Private Equity</a></li>
+                                    @foreach($categories as $category)                                        
+                                    <li><a href="{{ url('/category/services/'.$category->id.'/'.$category->category_slug) }}">{{ $category->category_name }}</a></li>
+                                    @endforeach
+
                                 </ul>
                             </div>
                         </div>
@@ -96,7 +96,7 @@
                 </div>
                 <div class="pull-right">
                     <ul class="footer-list">
-                        <li><a href="{{ asset('frontend/') }}/#">Privacy Policy</a></li>
+                        <li><a href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
                         <li><a href="{{ asset('frontend/') }}/#">Legal Terms</a></li>
                         <li><a href="{{ asset('frontend/') }}/#">FAQ’s</a></li>
                     </ul>
