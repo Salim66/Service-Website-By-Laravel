@@ -1283,14 +1283,14 @@ img{
 }
 
 .main-menu .navigation > li:last-child{
-	margin-right:0px;
+	margin-right:0px;nu .navigation > li > a 
 }
 
 .main-menu .navigation > li > a{
 	position:relative;
 	display:block;
 	text-align:center;
-	font-size:14px;
+	font-size:12px;
 	line-height:30px;
 	font-weight:600;
 	opacity:1;
@@ -1350,7 +1350,7 @@ img{
 
 .main-menu .navigation > li > ul > li > a{
 	position:relative;
-	font-size:15px;
+	font-size:12px;
 	line-height:24px;
 	color:#7e8597;
 	font-weight:500;
@@ -1447,7 +1447,7 @@ img{
 .main-menu .navigation > li > ul > li  > ul > li > a{
 	position:relative;
 	display:block;
-	font-size:15px;
+	font-size:12px;
 	line-height:24px;
 	color:#7e8597;
 	font-weight:500;
@@ -2060,7 +2060,7 @@ img{
 .sticky-header .main-menu .navigation > li > a{
 	padding:20px 0px !important;
 	line-height:30px;
-	font-size:16px;
+	font-size:12px;
 	font-weight:500;
 	color:#222222;
 	text-transform:capitalize;
