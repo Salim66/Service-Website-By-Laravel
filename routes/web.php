@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\PostCategoryController;
+use App\Http\Controllers\Backend\ReturnPolicyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,8 @@ Route::post('/service-search', [IndexController::class, 'serviceSearch'])->name(
 Route::get('/about-us', [IndexController::class, 'aboutUs'])->name('about.us');
 //Privacy Policy Page
 Route::get('/privacy-policy', [IndexController::class, 'privacyPolicy'])->name('privacy.policy');
+//Return Policy Page
+Route::get('/return-policy', [IndexController::class, 'returnPolicy'])->name('return.policy');
 
 
 // Frontend all routes
@@ -196,6 +199,15 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         Route::get('/edit/{id}', [PolicyController::class, 'edit'])->name('policy.edit');
         Route::put('/update/{id}', [PolicyController::class, 'update'])->name('policy.update');
         Route::get('/delete/{id}', [PolicyController::class, 'delete'])->name('policy.delete');
+    });
+
+    // Return Policy Routes
+    Route::prefix('returns')->group(function () {
+        Route::get('/list', [ReturnPolicyController::class, 'list'])->name('return.list');
+        Route::post('/store', [ReturnPolicyController::class, 'store'])->name('return.store');
+        Route::get('/edit/{id}', [ReturnPolicyController::class, 'edit'])->name('return.edit');
+        Route::put('/update/{id}', [ReturnPolicyController::class, 'update'])->name('return.update');
+        Route::get('/delete/{id}', [ReturnPolicyController::class, 'delete'])->name('return.delete');
     });
 
 });

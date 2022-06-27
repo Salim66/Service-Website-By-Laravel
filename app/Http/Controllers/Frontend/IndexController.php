@@ -13,6 +13,7 @@ use App\Models\About;
 use App\Models\Policy;
 use App\Models\Post;
 use App\Models\PostCategory;
+use App\Models\ReturnPolicy;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -185,6 +186,14 @@ class IndexController extends Controller
     public function privacyPolicy(){
         $all_data = Policy::all();
         return view('frontend.privacy_policy', compact('all_data'));
+    }
+
+    /**
+     * Return Policy page
+     */
+    public function returnPolicy(){
+        $all_data = ReturnPolicy::all();
+        return view('frontend.return_policy', compact('all_data'));
     }
 
 }

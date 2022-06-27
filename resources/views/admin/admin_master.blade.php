@@ -322,6 +322,10 @@
 	<script src="{{ asset('backend/js/template.js') }}"></script>
 	<script src="{{ asset('backend/js/pages/dashboard.js') }}"></script>
 
+    <!-- Data Table -->
+    <script src="{{ asset('../assets/vendor_components/datatable/datatables.min.js') }}"></script>
+	<script src="{{ asset('backend/js/pages/data-table.js') }}"></script>
+
     <!-- CDEditor -->
     <script src="{{ asset('../assets/vendor_components/ckeditor/ckeditor.js') }}"></script>
 	<script src="{{ asset('../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js') }}"></script>

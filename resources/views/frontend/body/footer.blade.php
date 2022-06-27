@@ -31,6 +31,7 @@
                                     <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
                                     <li><a href="{{ route('blog') }}">Blog</a></li>
                                     <li><a href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
+                                    <li><a href="{{ route('return.policy') }}">Return Policy</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -97,8 +98,7 @@
                 <div class="pull-right">
                     <ul class="footer-list">
                         <li><a href="{{ route('privacy.policy') }}">Privacy Policy</a></li>
-                        <li><a href="{{ asset('frontend/') }}/#">Legal Terms</a></li>
-                        <li><a href="{{ asset('frontend/') }}/#">FAQ’s</a></li>
+                        <li><a href="{{ route('return.policy') }}">Return Policy</a></li>
                     </ul>
                 </div>
             </div>
