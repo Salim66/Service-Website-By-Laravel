@@ -27,7 +27,7 @@
                             <div class="footer-widget links-widget">
                                 <h2>Usefull links</h2>
                                 <ul class="footer-link-list">
-                                    <li><a href="{{ asset('frontend/') }}/#">About Company</a></li>
+                                    <li><a href="{{ route('about.us') }}">About Us</a></li>
                                     <li><a href="{{ asset('frontend/') }}/#">Meet Team</a></li>
                                     <li><a href="{{ asset('frontend/') }}/#">Testimonials</a></li>
                                     <li><a href="{{ asset('frontend/') }}/#">Our Projects</a></li>

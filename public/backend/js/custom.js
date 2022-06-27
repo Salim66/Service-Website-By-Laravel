@@ -47,5 +47,12 @@
             $('#slider_image_preview').attr('src', imageURL);
         });
 
+        // About Image Preview
+        $('#about_image').change(function(e){
+            e.preventDefault();
+            let imageURL = URL.createObjectURL(e.target.files[0]);
+            $('#about_image_preview').attr('src', imageURL);
+        });
+
     });
 })(jQuery);

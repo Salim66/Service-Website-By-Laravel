@@ -9,6 +9,7 @@ use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Models\SubSubCategory;
 use App\Http\Controllers\Controller;
+use App\Models\About;
 use App\Models\Post;
 use App\Models\PostCategory;
 use Illuminate\Support\Facades\Auth;
@@ -167,6 +168,14 @@ class IndexController extends Controller
         $search = $request->search;
         $all_data = Service::where('title', 'LIKE', '%'.$search.'%')->latest()->paginate(9);
         return view('frontend.search_box_wise_service', compact('all_data', 'search'));
+    }
+
+    /**
+     * About Page
+     */
+    public function aboutUs(){
+        $data = About::find(1);
+        return view('frontend.about_us', compact('data'));
     }
 
 }

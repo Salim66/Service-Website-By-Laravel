@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\AboutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\ContactMessage;
@@ -54,6 +55,8 @@ Route::get('/category-wise-post/{slug}', [IndexController::class, 'categoryWiseP
 Route::post('/blog-search', [IndexController::class, 'blogSearch'])->name('search.blog');
 //Search Box Service Search
 Route::post('/service-search', [IndexController::class, 'serviceSearch'])->name('search.service');
+//About Us Page
+Route::get('/about-us', [IndexController::class, 'aboutUs'])->name('about.us');
 
 // Frontend all routes
 Route::middleware(['auth:sanctum,web', config('jetstream.auth_session'),'verified'])->group(function () {
@@ -158,6 +161,10 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         // SEO Routes
         Route::get('seos/edit', [SeoController::class, 'edit'])->name('seo.edit');
         Route::put('seos/update/{id}', [SeoController::class, 'update'])->name('seo.update');
+
+        // About Routes
+        Route::get('about/edit', [AboutController::class, 'edit'])->name('about.edit');
+        Route::put('about/update/{id}', [AboutController::class, 'update'])->name('about.update');
 
     });
 
