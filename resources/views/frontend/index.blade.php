@@ -53,21 +53,20 @@
     <div class="auto-container">
         <div class="row clearfix">
 
+            @php
+                $about = \App\Models\About::find(1);
+            @endphp
+
             <!-- Content Column -->
             <div class="content-column col-lg-6 col-md-12 col-sm-12">
                 <div class="inner-column">
-                    <h2>Dedicated consultant <br> provide solutions in three basic areas <span>Business</span></h2>
-                    <div class="text">Consoul is a leading consulting and training firm in the area of project man-agement, active in the marketplace since 1997. Our mission is to provide complex improvement in the level and culture of project management, as a means of across the board improvement.</div>
+                    <h2>{{ $about->title }}</h2>
+                    <div class="text">{!! Str::words(htmlspecialchars_decode($about->description), 40, '...') !!}</div>
 
-                    <!-- Play Box -->
-                    <div class="play-box">
-                        <a href="https://www.youtube.com/watch?v=kxPCFljwJws" class="lightbox-image play-icon wow bounceIn animated" data-wow-delay="0ms" data-wow-duration="1500ms" style="background-image: url(&quot;images/resource/play-image.jpg&quot;); visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: bounceIn;"><span class="play-btn flaticon-play-button"></span></a>
-                        Ervin Dexter <br><span>Chief Financial Officer</span>
-                    </div>
 
                     <!-- More Box -->
                     <div class="more-about">
-                        <a class="about" href="about.html">More About Company <span class="arrow flaticon-next-7"></span></a>
+                        <a class="about" href="{{ route('about.us') }}">More About Company <span class="arrow flaticon-next-7"></span></a>
                     </div>
 
                 </div>
@@ -87,19 +86,7 @@
                     <div class="images-gallery">
                         <!-- Image One -->
                         <div class="image image-one">
-                            <a href="images/resource/business.jpg" data-fancybox="business" data-caption="" class=""><img src="{{ asset('frontend/') }}/images/resource/business.jpg" alt=""></a>
-                        </div>
-                        <!-- Image Two -->
-                        <div class="image image-two">
-                            <a href="images/resource/business-1.jpg" data-fancybox="business" data-caption="" class=""><img src="{{ asset('frontend/') }}/images/resource/business-1.jpg" alt=""></a>
-                        </div>
-                        <!-- Image Three -->
-                        <div class="image image-three">
-                            <a href="images/resource/business-2.jpg" data-fancybox="business" data-caption="" class=""><img src="{{ asset('frontend/') }}/images/resource/business-2.jpg" alt=""></a>
-                        </div>
-                        <!-- Image Four -->
-                        <div class="image image-four">
-                            <a href="images/resource/business-3.jpg" data-fancybox="business" data-caption="" class=""><img src="{{ asset('frontend/') }}/images/resource/business-3.jpg" alt=""></a>
+                            <a href="{{ URL::to($about->image) }}" data-fancybox="business" data-caption="" class=""><img src="{{ URL::to($about->image) }}" alt=""></a>
                         </div>
                     </div>
 

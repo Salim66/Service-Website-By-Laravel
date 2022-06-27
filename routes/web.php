@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\PostCategoryController;
 use App\Http\Controllers\Backend\ReturnPolicyController;
+use App\Http\Controllers\Backend\SpnsorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -188,8 +189,6 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         Route::get('/edit/{id}', [SliderController::class, 'sliderEdit'])->name('slider.edit');
         Route::post('/update', [SliderController::class, 'sliderUpdate'])->name('slider.update');
         Route::get('/delete/{id}', [SliderController::class, 'sliderDelete'])->name('slider.delete');
-        Route::get('/inactive/{id}', [SliderController::class, 'sliderInactive'])->name('slider.inactive');
-        Route::get('/active/{id}', [SliderController::class, 'sliderActive'])->name('slider.active');
     });
 
     // Privacy Policy Routes
@@ -208,6 +207,15 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         Route::get('/edit/{id}', [ReturnPolicyController::class, 'edit'])->name('return.edit');
         Route::put('/update/{id}', [ReturnPolicyController::class, 'update'])->name('return.update');
         Route::get('/delete/{id}', [ReturnPolicyController::class, 'delete'])->name('return.delete');
+    });
+
+    // Admin All Spnsor Routes
+    Route::prefix('spnsor')->group(function(){
+        Route::get('/view', [SpnsorController::class, 'spnsorView'])->name('manage.spnsor');
+        Route::post('/store', [SpnsorController::class, 'spnsorStore'])->name('spnsor.store');
+        Route::get('/edit/{id}', [SpnsorController::class, 'spnsorEdit'])->name('spnsor.edit');
+        Route::post('/update', [SpnsorController::class, 'spnsorUpdate'])->name('spnsor.update');
+        Route::get('/delete/{id}', [SpnsorController::class, 'spnsorDelete'])->name('spnsor.delete');
     });
 
 });

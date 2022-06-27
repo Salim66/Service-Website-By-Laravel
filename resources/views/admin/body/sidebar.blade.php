@@ -114,6 +114,19 @@
             </ul>
         </li>
 
+        <li class="treeview {{ ($prefix == '/spnsor')? 'active' : '' }}">
+            <a href="#">
+              <i data-feather="message-circle"></i>
+              <span>Spnsor</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ ($route == 'manage.spnsor')? 'active' : '' }}"><a href="{{ route('manage.spnsor') }}"><i class="ti-more"></i>Manage Spnsor</a></li>
+            </ul>
+        </li>
+
         <li class="header nav-small-cap">User Interface</li>
 
         <li class="treeview">
