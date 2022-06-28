@@ -96,6 +96,8 @@
             <li><a href="{{ route('social.edit') }}"><i class="ti-more"></i>Social Link</a></li>
             <li class="{{ ($route == 'seo.edit')? 'active' : '' }}"><a href="{{ route('seo.edit') }}"><i class="ti-more"></i>SEO</a></li>
             <li class="{{ ($route == 'about.edit')? 'active' : '' }}"><a href="{{ route('about.edit') }}"><i class="ti-more"></i>About</a></li>
+            <li class="{{ ($route == 'capabilities.edit')? 'active' : '' }}"><a href="{{ route('capabilities.edit') }}"><i class="ti-more"></i>Our Capabilities</a></li>
+            <li class="{{ ($route == 'certified.edit')? 'active' : '' }}"><a href="{{ route('certified.edit') }}"><i class="ti-more"></i>GRI Certified Training</a></li>
             <li class="{{ ($route == 'policy.list')? 'active' : '' }}"><a href="{{ route('policy.list') }}"><i class="ti-more"></i>Privacy Policy</a></li>
             <li class="{{ ($route == 'return.list')? 'active' : '' }}"><a href="{{ route('return.list') }}"><i class="ti-more"></i>Return Policy</a></li>
           </ul>

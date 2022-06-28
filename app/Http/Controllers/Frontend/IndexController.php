@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Models\SubSubCategory;
 use App\Http\Controllers\Controller;
 use App\Models\About;
+use App\Models\Capabilities;
+use App\Models\GRICertified;
 use App\Models\Policy;
 use App\Models\Post;
 use App\Models\PostCategory;
@@ -178,6 +180,22 @@ class IndexController extends Controller
     public function aboutUs(){
         $data = About::find(1);
         return view('frontend.about_us', compact('data'));
+    }
+
+    /**
+     * Our Capabilities Page
+     */
+    public function ourCapabilities(){
+        $data = Capabilities::find(1);
+        return view('frontend.our_capabilities', compact('data'));
+    }
+
+    /**
+     * GRI Certified Page
+     */
+    public function griCertified(){
+        $data = GRICertified::find(1);
+        return view('frontend.gri_certified', compact('data'));
     }
 
     /**

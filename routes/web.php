@@ -15,6 +15,8 @@ use App\Http\Controllers\Backend\ContractUsController;
 use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\CapabilitiesController;
+use App\Http\Controllers\Backend\GRICertifiedController;
 use App\Http\Controllers\Backend\PostCategoryController;
 use App\Http\Controllers\Backend\ReturnPolicyController;
 use App\Http\Controllers\Backend\SpnsorController;
@@ -60,6 +62,10 @@ Route::post('/blog-search', [IndexController::class, 'blogSearch'])->name('searc
 Route::post('/service-search', [IndexController::class, 'serviceSearch'])->name('search.service');
 //About Us Page
 Route::get('/about-us', [IndexController::class, 'aboutUs'])->name('about.us');
+//Our Capabilities Page
+Route::get('/our-capabilities', [IndexController::class, 'ourCapabilities'])->name('our.capabilities');
+//GRI Certified Page
+Route::get('/gri-certified-traning-partner', [IndexController::class, 'griCertified'])->name('gri.certified.training');
 //Privacy Policy Page
 Route::get('/privacy-policy', [IndexController::class, 'privacyPolicy'])->name('privacy.policy');
 //Return Policy Page
@@ -173,6 +179,14 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         // About Routes
         Route::get('about/edit', [AboutController::class, 'edit'])->name('about.edit');
         Route::put('about/update/{id}', [AboutController::class, 'update'])->name('about.update');
+      
+        // Our Capabilities Routes
+        Route::get('capabilities/edit', [CapabilitiesController::class, 'edit'])->name('capabilities.edit');
+        Route::put('capabilities/update/{id}', [CapabilitiesController::class, 'update'])->name('capabilities.update');
+      
+        // GRI Certified Routes
+        Route::get('certified/edit', [GRICertifiedController::class, 'edit'])->name('certified.edit');
+        Route::put('certified/update/{id}', [GRICertifiedController::class, 'update'])->name('certified.update');
 
     });
 

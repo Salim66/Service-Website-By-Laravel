@@ -65,8 +65,10 @@
                                 </li>
 
                                
+                                <li><a href="{{ route('our.capabilities') }}">Our Capabilities</a></li>
                                 <li><a href="{{ route('blog') }}">Blog</a></li>
                                 <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
+                                <li><a href="{{ route('gri.certified.training') }}">GRI Certified Training Partner</a></li>
                             </ul>
                         </div>
                     </nav>
