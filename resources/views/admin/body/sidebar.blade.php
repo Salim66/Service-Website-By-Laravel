@@ -83,6 +83,18 @@
             </ul>
         </li>
 
+        <li class="treeview {{ ($prefix == '/training-category')? 'active' : '' }}">
+            <a href="#">
+                <i data-feather="package"></i> <span>Training Category</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ ($route == 'all.training.category')? 'active' : '' }}"><a href="{{ route('all.training.category') }}"><i class="ti-more"></i>All Category</a></li>
+            </ul>
+        </li>
+
         <li class="treeview">
           <a href="#">
             <i class="ti-settings"></i>
