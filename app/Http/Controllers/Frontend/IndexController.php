@@ -11,6 +11,7 @@ use App\Models\SubSubCategory;
 use App\Http\Controllers\Controller;
 use App\Models\About;
 use App\Models\Capabilities;
+use App\Models\Gallery;
 use App\Models\GRICertified;
 use App\Models\Policy;
 use App\Models\Post;
@@ -212,6 +213,14 @@ class IndexController extends Controller
     public function returnPolicy(){
         $all_data = ReturnPolicy::all();
         return view('frontend.return_policy', compact('all_data'));
+    }
+
+    /**
+     * Gallery page
+     */
+    public function gallery(){
+        $all_data = Gallery::latest()->get();
+        return view('frontend.gallery', compact('all_data'));
     }
 
 }

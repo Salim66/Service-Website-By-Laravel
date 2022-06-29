@@ -100,6 +100,7 @@
             <li class="{{ ($route == 'certified.edit')? 'active' : '' }}"><a href="{{ route('certified.edit') }}"><i class="ti-more"></i>GRI Certified Training</a></li>
             <li class="{{ ($route == 'policy.list')? 'active' : '' }}"><a href="{{ route('policy.list') }}"><i class="ti-more"></i>Privacy Policy</a></li>
             <li class="{{ ($route == 'return.list')? 'active' : '' }}"><a href="{{ route('return.list') }}"><i class="ti-more"></i>Return Policy</a></li>
+            <li class="{{ ($route == 'gallery.list')? 'active' : '' }}"><a href="{{ route('gallery.list') }}"><i class="ti-more"></i>Gallery</a></li>
           </ul>
         </li>
 

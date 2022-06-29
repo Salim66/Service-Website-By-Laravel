@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\CapabilitiesController;
+use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\GRICertifiedController;
 use App\Http\Controllers\Backend\PostCategoryController;
 use App\Http\Controllers\Backend\ReturnPolicyController;
@@ -70,6 +71,8 @@ Route::get('/gri-certified-traning-partner', [IndexController::class, 'griCertif
 Route::get('/privacy-policy', [IndexController::class, 'privacyPolicy'])->name('privacy.policy');
 //Return Policy Page
 Route::get('/return-policy', [IndexController::class, 'returnPolicy'])->name('return.policy');
+//Gallery Page
+Route::get('/gallery', [IndexController::class, 'gallery'])->name('gallery');
 
 
 // Frontend all routes
@@ -230,6 +233,15 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         Route::get('/edit/{id}', [SpnsorController::class, 'spnsorEdit'])->name('spnsor.edit');
         Route::post('/update', [SpnsorController::class, 'spnsorUpdate'])->name('spnsor.update');
         Route::get('/delete/{id}', [SpnsorController::class, 'spnsorDelete'])->name('spnsor.delete');
+    });
+
+    // Admin All Gallery Routes
+    Route::prefix('gallery')->group(function(){
+        Route::get('/view', [GalleryController::class, 'galleryView'])->name('gallery.list');
+        Route::post('/store', [GalleryController::class, 'galleryStore'])->name('gallery.store');
+        Route::get('/edit/{id}', [GalleryController::class, 'galleryEdit'])->name('gallery.edit');
+        Route::post('/update', [GalleryController::class, 'galleryUpdate'])->name('gallery.update');
+        Route::get('/delete/{id}', [GalleryController::class, 'galleryDelete'])->name('gallery.delete');
     });
 
 });

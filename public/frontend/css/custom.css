@@ -69,3 +69,6 @@ p, .text {
     font-size: 12px;
 }
 
+.gallery_img {
+    display: block !important;
+}
