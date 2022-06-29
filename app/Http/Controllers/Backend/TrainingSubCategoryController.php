@@ -94,4 +94,12 @@ class TrainingSubCategoryController extends Controller
 
     }
 
+     /**
+     * Get Training SubCategory by ajax request
+     */
+    public function getTrainingSubCategory($category_id){
+        $data = TrainingSubCategory::where('training_category_id', $category_id)->orderBy('training_subcategory_name', 'ASC')->get();
+        return json_encode($data);
+    }
+
 }

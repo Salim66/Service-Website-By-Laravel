@@ -96,6 +96,20 @@
             </ul>
         </li>
 
+        <li class="treeview {{ ($prefix == '/training')? 'active' : '' }}">
+            <a href="#">
+              <i class="fa fa-product-hunt" aria-hidden="true"></i>
+              <span>Training</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-right pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li class="{{ ($route == 'add.training')? 'active' : '' }}"><a href="{{ route('add.training') }}"><i class="ti-more"></i>Add Training</a></li>
+              <li class="{{ ($route == 'manage.training')? 'active' : '' }}"><a href="{{ route('manage.training') }}"><i class="ti-more"></i>All Training</a></li>
+            </ul>
+        </li>
+
         <li class="treeview">
           <a href="#">
             <i class="ti-settings"></i>

@@ -11,8 +11,8 @@ class TrainingCategory extends Model
 
     protected $guarded = [];
 
-    // public function services(){
-    //     return $this->hasMany(Service::class);
-    // }
+    public function trainines(){
+        return $this->hasMany(Service::class);
+    }
 
 }

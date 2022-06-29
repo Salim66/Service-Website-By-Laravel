@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\PostCategoryController;
 use App\Http\Controllers\Backend\ReturnPolicyController;
 use App\Http\Controllers\Backend\SpnsorController;
 use App\Http\Controllers\Backend\TrainingCategoryController;
+use App\Http\Controllers\Backend\TrainingController;
 use App\Http\Controllers\Backend\TrainingSubCategoryController;
 
 /*
@@ -261,6 +262,20 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         Route::post('/sub/update', [TrainingSubCategoryController::class, 'trainingSubCategoryUpdate'])->name('training.subcategory.update');
         Route::get('/sub/delete/{id}', [TrainingSubCategoryController::class, 'trainingSubCategoryDelete'])->name('training.subcategory.delete');
 
+        Route::get('/trainingsubcategory/ajax/{category_id}', [TrainingSubCategoryController::class, 'getTrainingSubCategory']);
+
+    });
+
+
+     // Admin All Training Routes
+     Route::prefix('training')->group(function(){
+        Route::get('/add', [TrainingController::class, 'addTraining'])->name('add.training');
+        Route::post('/store', [TrainingController::class, 'trainingStore'])->name('training.store');
+        Route::get('/manage', [TrainingController::class, 'trainingManage'])->name('manage.training');
+        Route::get('/view/{id}', [TrainingController::class, 'trainingView'])->name('training.view');
+        Route::get('/edit/{id}', [TrainingController::class, 'trainingEdit'])->name('training.edit');
+        Route::post('/update', [TrainingController::class, 'trainingUpdate'])->name('training.update');
+        Route::get('/delete/{id}', [TrainingController::class, 'trainingDelete'])->name('training.delete');
     });
 
 });
