@@ -92,6 +92,7 @@
             </a>
             <ul class="treeview-menu">
               <li class="{{ ($route == 'all.training.category')? 'active' : '' }}"><a href="{{ route('all.training.category') }}"><i class="ti-more"></i>All Category</a></li>
+              <li class="{{ ($route == 'all.training.subcategory')? 'active' : '' }}"><a href="{{ route('all.training.subcategory') }}"><i class="ti-more"></i>All SubCategory</a></li>
             </ul>
         </li>
 

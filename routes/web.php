@@ -22,6 +22,7 @@ use App\Http\Controllers\Backend\PostCategoryController;
 use App\Http\Controllers\Backend\ReturnPolicyController;
 use App\Http\Controllers\Backend\SpnsorController;
 use App\Http\Controllers\Backend\TrainingCategoryController;
+use App\Http\Controllers\Backend\TrainingSubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -248,10 +249,18 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
     // Admin All Training Category Routes
     Route::prefix('training-category')->group(function(){
         Route::get('/view', [TrainingCategoryController::class, 'trainingCategoryView'])->name('all.training.category');
-        Route::training('/store', [TrainingCategoryController::class, 'trainingCategoryStore'])->name('training.category.store');
+        Route::post('/store', [TrainingCategoryController::class, 'trainingCategoryStore'])->name('training.category.store');
         Route::get('/edit/{id}', [TrainingCategoryController::class, 'trainingCategoryEdit'])->name('training.category.edit');
-        Route::training('/update', [TrainingCategoryController::class, 'trainingCategoryUpdate'])->name('training.category.update');
+        Route::post('/update', [TrainingCategoryController::class, 'trainingCategoryUpdate'])->name('training.category.update');
         Route::get('/delete/{id}', [TrainingCategoryController::class, 'trainingCategoryDelete'])->name('training.category.delete');
+
+        // Admin All Training SubCategory Routes
+        Route::get('/sub/view', [TrainingSubCategoryController::class, 'trainingSubCategoryView'])->name('all.training.subcategory');
+        Route::post('/sub/store', [TrainingSubCategoryController::class, 'trainingSubCategoryStore'])->name('training.subcategory.store');
+        Route::get('/sub/edit/{id}', [TrainingSubCategoryController::class, 'trainingSubCategoryEdit'])->name('training.subcategory.edit');
+        Route::post('/sub/update', [TrainingSubCategoryController::class, 'trainingSubCategoryUpdate'])->name('training.subcategory.update');
+        Route::get('/sub/delete/{id}', [TrainingSubCategoryController::class, 'trainingSubCategoryDelete'])->name('training.subcategory.delete');
+
     });
 
 });
