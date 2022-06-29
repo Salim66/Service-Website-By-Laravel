@@ -76,6 +76,14 @@ Route::get('/privacy-policy', [IndexController::class, 'privacyPolicy'])->name('
 Route::get('/return-policy', [IndexController::class, 'returnPolicy'])->name('return.policy');
 //Gallery Page
 Route::get('/gallery', [IndexController::class, 'gallery'])->name('gallery');
+// Category Wise Training Search Routes
+Route::get('/category/training/{cat_id}/{slug}', [IndexController::class, 'cateogrywiseTraining']);
+// SubCategory Wise Training Search Routes
+Route::get('/subcategory/training/{subcat_id}/{slug}', [IndexController::class, 'subCateogrywiseTraining']);
+// Training Details Page
+Route::get('/training-detials/{slug}', [IndexController::class, 'trainingDetails'])->name('training-details');
+// Category Wise Training
+Route::get('/category-wise-training/{slug}', [IndexController::class, 'categoryWiseTraining'])->name('category.wise.training');
 
 
 // Frontend all routes

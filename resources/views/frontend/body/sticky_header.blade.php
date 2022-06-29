@@ -53,7 +53,35 @@
                         </li>
                        
                         <li><a href="{{ route('our.capabilities') }}">Our Capabilities</a></li>
+                        @php
+                            $training_categories = \App\Models\TrainingCategory::all();
+                        @endphp
+
+                        <li class="dropdown"><a href="javascipt:void(0)">Training</a>
+                            <ul>
+                                @foreach($training_categories as $tr_category)
+                                    <li class="dropdown"><a href="{{ url('/category/training/'.$tr_category->id.'/'.$tr_category->training_category_slug) }}">{{ $tr_category->training_category_name }}</a>
+
+                                        <ul>
+                                            @php
+                                                    $training_subcategories = App\Models\TrainingSubCategory::where('training_category_id', $tr_category->id)->orderBy('training_subcategory_name', 'ASC')->get();
+                                            @endphp
+
+                                            @foreach($training_subcategories as $sub)
+                                                <li><a href="{{ url('/subcategory/training/'.$sub->id.'/'.$sub->training_subcategory_slug) }}">{{ $sub->training_subcategory_name }}</a>
+
+                                                </li>
+                                            @endforeach
+                                        </ul>
+
+                                    </li>
+                                @endforeach
+
+                                
+                            </ul>
+                        </li>
                         <li><a href="{{ route('blog') }}">Blog</a></li>
+                        <li><a href="{{ route('gallery') }}">Gallery</a></li>
                         <li><a href="{{ route('contact.us') }}">Contact Us</a></li>
                         <li><a href="{{ route('gri.certified.training') }}">GRI Certified Training Partner</a></li>
                     </ul>

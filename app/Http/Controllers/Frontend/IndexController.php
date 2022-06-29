@@ -2,21 +2,24 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Models\Post;
+use App\Models\About;
+use App\Models\Policy;
 use App\Models\Contact;
+use App\Models\Gallery;
 use App\Models\Service;
 use App\Models\Category;
+use App\Models\Training;
 use App\Models\SubCategory;
-use Illuminate\Http\Request;
-use App\Models\SubSubCategory;
-use App\Http\Controllers\Controller;
-use App\Models\About;
 use App\Models\Capabilities;
-use App\Models\Gallery;
 use App\Models\GRICertified;
-use App\Models\Policy;
-use App\Models\Post;
 use App\Models\PostCategory;
 use App\Models\ReturnPolicy;
+use Illuminate\Http\Request;
+use App\Models\SubSubCategory;
+use App\Models\TrainingCategory;
+use App\Models\TrainingSubCategory;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -82,7 +85,7 @@ class IndexController extends Controller
      */
     public function categoryWiseService($slug){
         $category = Category::where('category_slug', $slug)->first();
-        $all_data = Service::where('category_id', $category->id)->latest()->get();
+        $all_data = Service::where('category_id', $category->id)->latest()->paginate(9);
         return view('frontend.category_wise_service', compact('all_data', 'category'));
     }
 
@@ -221,6 +224,42 @@ class IndexController extends Controller
     public function gallery(){
         $all_data = Gallery::latest()->get();
         return view('frontend.gallery', compact('all_data'));
+    }
+
+    
+    /**
+     * Category Wise Training Search
+     */
+    public function cateogrywiseTraining($cat_id, $slug){
+        $all_data = Training::where('training_category_id', $cat_id)->orderBy('id', 'DESC')->get();
+        $category = TrainingCategory::findOrFail($cat_id);
+        return view('frontend.training.cateogry_training', compact('all_data', 'category'));
+    }
+
+    /**
+     * SubCategory Wise Training Search
+     */
+    public function subCateogrywiseTraining($subcat_id, $slug){
+        $all_data = Training::where('training_subcategory_id', $subcat_id)->orderBy('id', 'DESC')->get();
+        $subcategory = TrainingSubCategory::findOrFail($subcat_id);
+        return view('frontend.training.subcateogry_training', compact('all_data', 'subcategory'));
+    }
+    
+    /**
+     * Training Details Page
+     */
+    public function trainingDetails($slug){
+        $data = Training::where('title_slug', $slug)->first();
+        return view('frontend.training_details', compact('data'));
+    }
+
+    /**
+     * Category Wise Training
+     */
+    public function categoryWiseTraining($slug){
+        $category = TrainingCategory::where('training_category_slug', $slug)->first();
+        $all_data = Training::where('training_category_id', $category->id)->latest()->paginate(9);
+        return view('frontend.category_wise_training', compact('all_data', 'category'));
     }
 
 }

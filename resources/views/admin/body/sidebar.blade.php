@@ -85,7 +85,7 @@
 
         <li class="treeview {{ ($prefix == '/training-category')? 'active' : '' }}">
             <a href="#">
-                <i data-feather="package"></i> <span>Training Category</span>
+                <i class="fa fa-bug" aria-hidden="true"></i> <span>Training Category</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
               </span>
@@ -98,7 +98,7 @@
 
         <li class="treeview {{ ($prefix == '/training')? 'active' : '' }}">
             <a href="#">
-              <i class="fa fa-product-hunt" aria-hidden="true"></i>
+                <i class="fa fa-first-order" aria-hidden="true"></i>
               <span>Training</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
