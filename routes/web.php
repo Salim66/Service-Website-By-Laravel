@@ -16,6 +16,7 @@ use App\Http\Controllers\Backend\SocialLinkController;
 use App\Http\Controllers\Backend\SubCategoryController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\CapabilitiesController;
+use App\Http\Controllers\Backend\CustomerController;
 use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\GRICertifiedController;
 use App\Http\Controllers\Backend\PostCategoryController;
@@ -284,6 +285,25 @@ Route::middleware(['auth:sanctum,admin', config('jetstream.auth_session'),'verif
         Route::get('/edit/{id}', [TrainingController::class, 'trainingEdit'])->name('training.edit');
         Route::post('/update', [TrainingController::class, 'trainingUpdate'])->name('training.update');
         Route::get('/delete/{id}', [TrainingController::class, 'trainingDelete'])->name('training.delete');
+    });
+
+     // Admin All Training Routes
+     Route::prefix('training')->group(function(){
+        Route::get('/add', [TrainingController::class, 'addTraining'])->name('add.training');
+        Route::post('/store', [TrainingController::class, 'trainingStore'])->name('training.store');
+        Route::get('/manage', [TrainingController::class, 'trainingManage'])->name('manage.training');
+        Route::get('/view/{id}', [TrainingController::class, 'trainingView'])->name('training.view');
+        Route::get('/edit/{id}', [TrainingController::class, 'trainingEdit'])->name('training.edit');
+        Route::post('/update', [TrainingController::class, 'trainingUpdate'])->name('training.update');
+        Route::get('/delete/{id}', [TrainingController::class, 'trainingDelete'])->name('training.delete');
+    });
+
+    
+     // Customers All Routes
+     Route::prefix('customers')->group(function(){
+        Route::get('/manage', [CustomerController::class, 'customerManage'])->name('manage.customer');
+        Route::get('/view/{id}', [CustomerController::class, 'customerView'])->name('customer.view');
+        Route::get('/delete/{id}', [CustomerController::class, 'customerDelete'])->name('customer.delete');
     });
 
 });
