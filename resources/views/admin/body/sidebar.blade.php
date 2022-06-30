@@ -9,11 +9,11 @@
 
         <div class="user-profile">
 			<div class="ulogo">
-				 <a href="index.html">
+				 <a href="{{ url('/admin/dashboard') }}">
 				  <!-- logo for regular state and mobile devices -->
 					 <div class="d-flex align-items-center justify-content-center">
 						  <img src="{{ URL::to('backend/') }}/images/logo-dark.png" alt="">
-						  <h3><b>Sunny</b> Admin</h3>
+						  <h3> Admin</h3>
 					 </div>
 				</a>
 			</div>
@@ -23,7 +23,7 @@
       <ul class="sidebar-menu" data-widget="tree">
 
 		<li>
-          <a href="index.html">
+          <a href="{{ url('/admin/dashboard') }}">
             <i data-feather="pie-chart"></i>
 			<span>Dashboard</span>
           </a>
